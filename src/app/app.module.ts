@@ -26,6 +26,16 @@ import { InfrastructureProjectComponent } from './FrontOffice/infrastructure-pro
 import { WelcomNewUserComponent } from './Authentification/welcom-new-user/welcom-new-user.component';
 import { AddUserComponent } from './BackOffice/Modules/User Management/add-user/add-user.component';
 import { ForgotPasswordComponent } from './Authentification/forgot-password/forgot-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './Authentification/services/auth-interceptor.service';
+import { UserListComponent } from './BackOffice/Modules/User Management/user-list/user-list.component';
+import { CreateUserComponent } from './BackOffice/Modules/User Management/create-user/create-user.component';
+import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
+import { RoleListComponent } from './BackOffice/Modules/User Management/role-management/role-list/role-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -52,13 +62,24 @@ import { ForgotPasswordComponent } from './Authentification/forgot-password/forg
     InfrastructureProjectComponent,
     WelcomNewUserComponent,
     AddUserComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    UserListComponent,
+    CreateUserComponent,
+    CreateRoleComponent,
+    RoleListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
+  
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

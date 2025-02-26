@@ -199,7 +199,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" routerLink="/signin">
+            <a class="dropdown-item d-flex align-items-center" >
               <i class="bi bi-box-arrow-right"></i>
               <span>Sign Out</span>
             </a>
@@ -239,10 +239,33 @@
             <span>Users</span>
           </a>
         </li>
+      
+
         <li>
-          <a routerLink="/dashboard/user/addUser" class="no-underline">
+          <a routerLink="/dashboard/user/usersList" class="no-underline">
             <i class="bi bi-circle"></i>
-            <span>Add User</span>
+            <span>list Users</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/user/createUser" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>create user</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/user/rolesList" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>list roles</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/user/createRole" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>create role</span>
           </a>
         </li>
         
@@ -292,10 +315,10 @@
     </li><!-- End Contact Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/signin">
+      <button class="nav-link" (click)="onLogout()" >
         <i class="bi bi-box-arrow-right"></i>
         <span>Logout</span>
-      </a>
+      </button>
     </li><!-- End Logout Nav -->
 
   </ul>

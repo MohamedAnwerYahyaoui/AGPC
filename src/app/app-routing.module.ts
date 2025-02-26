@@ -20,6 +20,11 @@ import { CommercialProjectComponent } from './FrontOffice/commercial-project/com
 import { WelcomNewUserComponent } from './Authentification/welcom-new-user/welcom-new-user.component';
 import { AddUserComponent } from './BackOffice/Modules/User Management/add-user/add-user.component';
 import { ForgotPasswordComponent } from './Authentification/forgot-password/forgot-password.component';
+import { AuthGaurdservService } from './Authentification/services/auth-gaurdserv.service';
+import { UserListComponent } from './BackOffice/Modules/User Management/user-list/user-list.component';
+import { CreateUserComponent } from './BackOffice/Modules/User Management/create-user/create-user.component';
+import { RoleListComponent } from './BackOffice/Modules/User Management/role-management/role-list/role-list.component';
+import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
 
 const routes: Routes = [
  // Default Redirect to Client Home
@@ -50,11 +55,16 @@ const routes: Routes = [
  {
    path: 'dashboard',
    component: DashboardLayoutComponent,
+   canActivate: [AuthGaurdservService],
    children: [
      { path: '', component: DashboardHomeComponent },
      { path: 'user/management-user', component: UserManagementComponent },
      { path: 'user/management-profile', component: ProfileManagementComponent },
      { path: 'user/addUser', component: AddUserComponent },
+     { path: 'user/usersList', component: UserListComponent },
+     { path: 'user/createUser', component: CreateUserComponent },
+     { path: 'user/rolesList', component: RoleListComponent },
+     { path: 'user/createRole', component: CreateRoleComponent },
      { path: 'livrable/tache-management', component: LivrableManagementComponent },
      { path: 'ressource/ressource-management', component: RessourceManagementComponent },
    ],
