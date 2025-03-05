@@ -1,0 +1,55 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Update Zone</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="/dashboard/environnement/list-zones">Zones</a></li>
+        <li class="breadcrumb-item active">Update Zone</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Update Zone</h5>
+
+            <!-- Zone Form -->
+            <form [formGroup]="zoneForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <input id="nom" formControlName="nom" class="form-control" type="text" required>
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input id="description" formControlName="description" class="form-control" type="text" required>
+              </div>
+
+              <div class="form-group">
+                <label for="chantier">Chantier</label>
+                <select id="chantier" formControlName="chantier" class="form-control" required>
+                  <option *ngFor="let chantier of chantiers" [ngValue]="chantier">{{ chantier.nom }}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="user">User</label>
+                <select id="user" formControlName="user" class="form-control" required>
+                  <option *ngFor="let user of users" [ngValue]="user">{{ user.nom }}</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary mt-3" [disabled]="zoneForm.invalid">Update Zone</button>
+            </form>
+            <!-- End Zone Form -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

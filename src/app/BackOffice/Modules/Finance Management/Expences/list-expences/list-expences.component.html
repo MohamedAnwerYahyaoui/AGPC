@@ -1,0 +1,72 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>List of Expenses</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active">Expenses</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Expenses</h5>
+
+            <!-- Search Input -->
+            <input type="text" [(ngModel)]="searchCategory" class="form-control mb-3" placeholder="Search by category...">
+
+            <!-- Currency Selector -->
+            <div class="mb-3 d-flex align-items-center">
+             <h3><label style="color: brown;" for="currency" class="me-2">Select Currency:</label></h3>
+              <select id="currency" [(ngModel)]="selectedCurrency" class="form-control form-control-sm" style="width: auto;">
+                <option value="TND">TND</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+
+            <!-- Table with stripped rows -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Montant ({{selectedCurrency}})</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Budget</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let n of filteredExpences()">
+                  <td>{{n?.id}}</td>
+                  <td>{{convertCurrency(n?.montant ?? 0) | number:'1.2-2'}}</td> <!-- Provide default value 0 if montant is undefined -->
+                  <td>{{n?.category}}</td>
+                  <td>{{n?.description}}</td>
+                  <td>{{n?.budget?.nom}}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm" [routerLink]="['/dashboard/finance/UpdateExpences/', n.id]">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteExpences(n.id)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+
+            <button class="btn btn-primary mt-3" [routerLink]="['/dashboard/finance/AddExpences']">
+              <i class="fas fa-plus"></i> Add Expense
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

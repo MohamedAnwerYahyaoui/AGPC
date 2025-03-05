@@ -20,7 +20,20 @@ import { CommercialProjectComponent } from './FrontOffice/commercial-project/com
 import { WelcomNewUserComponent } from './Authentification/welcom-new-user/welcom-new-user.component';
 import { AddUserComponent } from './BackOffice/Modules/User Management/add-user/add-user.component';
 import { ForgotPasswordComponent } from './Authentification/forgot-password/forgot-password.component';
-import {ListBudgetComponent} from "./BackOffice/Modules/Budget/list-budget/list-budget.component";
+import { ListBudgetComponent } from './BackOffice/Modules/Finance Management/Budget/list-budget/list-budget.component';
+import { AddBudgetComponent } from './BackOffice/Modules/Finance Management/Budget/add-budget/add-budget.component';
+import { UpdateBudgetComponent } from './BackOffice/Modules/Finance Management/Budget/update-budget/update-budget.component';
+import { ListExpencesComponent } from './BackOffice/Modules/Finance Management/Expences/list-expences/list-expences.component';
+import { AddExpencesComponent } from './BackOffice/Modules/Finance Management/Expences/add-expences/add-expences.component';
+import { UpdateExpencesComponent } from './BackOffice/Modules/Finance Management/Expences/update-expences/update-expences.component';
+import { ListChantierComponent } from './BackOffice/Modules/Environnement Management/Chantier/list-chantier/list-chantier.component';
+import { UpdateChantierComponent } from './BackOffice/Modules/Environnement Management/Chantier/list-chantier/update-chantier/update-chantier.component';
+import { AddChantierComponent } from './BackOffice/Modules/Environnement Management/Chantier/add-chantier/add-chantier.component';
+import { ListZonesComponent } from './BackOffice/Modules/Environnement Management/Zones/list-zones/list-zones.component';
+import { AddZoneComponent } from './BackOffice/Modules/Environnement Management/Zones/add-zone/add-zone.component';
+import { UpdateZoneComponent } from './BackOffice/Modules/Environnement Management/Zones/update-zone/update-zone.component';
+import { ListFormationsComponent } from './BackOffice/Modules/Formation Management/list-formations/list-formations.component';
+import { AddFormationsComponent } from './BackOffice/Modules/Formation Management/add-formations/add-formations.component';
 
 const routes: Routes = [
  // Default Redirect to Client Home
@@ -61,16 +74,29 @@ const routes: Routes = [
 
 
 
-     //Budget Routing
-     { path: 'Budget/Budget-management', component: ListBudgetComponent },
+     //Finance Routing
 
 
+     {path:'finance/budget',component:ListBudgetComponent},
 
+     {path:'finance/AddBudget',component:AddBudgetComponent},
 
+     {path:'finance/UpdateBudget/:id',component:UpdateBudgetComponent},
+     {path:'finance/expences',component:ListExpencesComponent},
+     {path:'finance/AddExpences',component:AddExpencesComponent},
+     {path:'finance/UpdateExpences/:id',component:UpdateExpencesComponent},
 
+     //Environenment
+     {path:'environnement/list',component:ListChantierComponent},
+     {path:'environnement/UpdateChantier/:id',component:UpdateChantierComponent},
+     {path:'environnement/AddChantier',component:AddChantierComponent},
+     {path:'environnement/listZones',component:ListZonesComponent},
+     {path:'environnement/AddZone',component:AddZoneComponent},
+     {path:'environnement/UpdateZone/:id',component:UpdateZoneComponent},
 
-
-
+     //formation
+     {path:'formation/list',component:ListFormationsComponent},
+     {path:'formation/AddFormation',component:AddFormationsComponent},
    ],
  },
 

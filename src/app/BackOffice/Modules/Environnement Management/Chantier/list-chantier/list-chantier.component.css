@@ -1,0 +1,35 @@
+.form-control-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+.card-title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4e73df;
+}
+
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.map-container {
+  height: 300px; /* Adjust the height to make the map fit well within the section */
+  width: 100%;
+  margin-bottom: 20px; /* Add some space below the map */
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    height: 400px; /* Increase the height for larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .map-container {
+    height: 500px; /* Further increase the height for even larger screens */
+  }
+}
