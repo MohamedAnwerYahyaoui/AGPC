@@ -24,4 +24,16 @@ export class UserServiceService {
   deleteUser(userId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${userId}`);
   }
+
+  sendResetLink(email: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/forgot-password`, null, {
+      params: { email }
+    });  
+  }
+
+  updateUser(userId: string, user: UserRecord): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${userId}`, user);
+  }
+  
+
 }

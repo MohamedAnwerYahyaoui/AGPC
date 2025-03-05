@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class SigninComponent implements OnInit{
   signinForm: FormGroup;
   errorMessage: string = '';
+  showPassword = false;
 
   constructor(private authService: AuthService, private router: Router) {
     this.signinForm = new FormGroup({

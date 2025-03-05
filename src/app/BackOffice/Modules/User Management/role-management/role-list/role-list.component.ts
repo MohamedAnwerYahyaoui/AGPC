@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleDTO } from '../../models/role-dto';
 import { RoleService } from '../../services/roles/role.service';
+import { RoleRecord } from '../../models/role-record';
 
 @Component({
   selector: 'app-role-list',
@@ -13,6 +14,7 @@ export class RoleListComponent implements OnInit {
   loading = true;
   errorMessage = '';
 
+  
   constructor(private roleService: RoleService) {}
 
   ngOnInit() {
@@ -32,13 +34,37 @@ export class RoleListComponent implements OnInit {
     });
   }
 
-  deleteRole(roleName: string) {
-    if (confirm(`Are you sure you want to delete ${roleName}?`)) {
-      this.roleService.deleteRole(roleName).subscribe({
-        next: () => this.loadRoles(),
-        error: () => this.errorMessage = 'Failed to delete role'
-      });
-    }
+  selectedRole: string = '';
+
+showConfirmModal(roleName: string) {
+  this.selectedRole = roleName;
+  const modal = document.getElementById('confirmModal');
+  if (modal) {
+    modal.style.display = 'block';
   }
+}
+
+closeModal() {
+  const modal = document.getElementById('confirmModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+confirmDelete() {
+  if (this.selectedRole) {
+    this.roleService.deleteRole(this.selectedRole).subscribe({
+      next: () => {
+        this.loadRoles();
+        this.closeModal();
+      },
+      error: () => this.errorMessage = 'Failed to delete role'
+    });
+  }
+}
+
+
+
+
 
 }

@@ -34,6 +34,8 @@ import { UserListComponent } from './BackOffice/Modules/User Management/user-lis
 import { CreateUserComponent } from './BackOffice/Modules/User Management/create-user/create-user.component';
 import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
 import { RoleListComponent } from './BackOffice/Modules/User Management/role-management/role-list/role-list.component';
+import { HomeUserComponent } from './BackOffice/Modules/User Management/home-user/home-user.component';
+import { UpdateComponent } from './BackOffice/Modules/User Management/role-management/update/update.component';
 
 
 
@@ -66,7 +68,9 @@ import { RoleListComponent } from './BackOffice/Modules/User Management/role-man
     UserListComponent,
     CreateUserComponent,
     CreateRoleComponent,
-    RoleListComponent
+    RoleListComponent,
+    HomeUserComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -24,4 +24,21 @@ export class RoleService {
   deleteRole(roleName: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${roleName}`);
   }
+
+  getRoleById(roleId: string) {
+    return this.http.get<RoleDTO>(`${this.apiUrl}/id/${roleId}`);
+  }
+
+  updateRole(originalRoleName: string, role: RoleRecord): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${originalRoleName}`, role);
+  }
+
+
+  getRoleByName(roleName: string): Observable<RoleDTO> {
+    return this.http.get<RoleDTO>(`${this.apiUrl}/role/${roleName}`);
+  }
+  
+
+  
+  
 }

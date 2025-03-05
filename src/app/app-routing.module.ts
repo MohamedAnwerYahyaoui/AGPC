@@ -25,6 +25,8 @@ import { UserListComponent } from './BackOffice/Modules/User Management/user-lis
 import { CreateUserComponent } from './BackOffice/Modules/User Management/create-user/create-user.component';
 import { RoleListComponent } from './BackOffice/Modules/User Management/role-management/role-list/role-list.component';
 import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
+import { HomeUserComponent } from './BackOffice/Modules/User Management/home-user/home-user.component';
+import { UpdateComponent } from './BackOffice/Modules/User Management/role-management/update/update.component';
 
 const routes: Routes = [
  // Default Redirect to Client Home
@@ -48,7 +50,7 @@ const routes: Routes = [
  // Authentication
  { path: 'signin', component: SigninComponent },
  { path: 'signup', component: SignupComponent },
- { path: 'welcome', component: WelcomNewUserComponent },
+ { path: 'password-reset', component: WelcomNewUserComponent },
  { path: 'forgotPassword', component: ForgotPasswordComponent },
 
  // BackOffice Layout (Dashboard)
@@ -61,9 +63,11 @@ const routes: Routes = [
      { path: 'user/management-user', component: UserManagementComponent },
      { path: 'user/management-profile', component: ProfileManagementComponent },
      { path: 'user/addUser', component: AddUserComponent },
+     { path: 'user/userHome', component: HomeUserComponent },
      { path: 'user/usersList', component: UserListComponent },
      { path: 'user/createUser', component: CreateUserComponent },
      { path: 'user/rolesList', component: RoleListComponent },
+     { path: 'user/updateRole/:name', component: UpdateComponent },
      { path: 'user/createRole', component: CreateRoleComponent },
      { path: 'livrable/tache-management', component: LivrableManagementComponent },
      { path: 'ressource/ressource-management', component: RessourceManagementComponent },

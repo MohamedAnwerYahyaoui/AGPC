@@ -45,11 +45,22 @@
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <button (click)="deleteUser(user.id)" 
-                      class="text-red-600 hover:text-red-900">
-                Delete
+              <button 
+                (click)="showConfirmModal(user.id)"
+                class="text-red-600 hover:text-red-900"
+              >
+              deactivate 
               </button>
             </td>
+            
+            <!-- Custom Confirmation Modal -->
+            <div id="confirmModal" class="modal">
+              <div class="modal-content">
+                <p>Are you sure you want to deactivate  <strong>{{ selectedUser }}</strong>?</p>
+                <button (click)="confirmDelete()" class="confirm-btn">Yes, deactivate </button>
+                <button (click)="closeModal()" class="cancel-btn">Cancel</button>
+              </div>
+            </div>
           </tr>
         </tbody>
       </table>

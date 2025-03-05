@@ -32,12 +32,30 @@
             <td class="px-6 py-4 whitespace-nowrap">{{ role.description }}</td>
             <td class="px-6 py-4 whitespace-nowrap">
               <button 
-                (click)="deleteRole(role.name)"
+                (click)="showConfirmModal(role.name)"
                 class="text-red-600 hover:text-red-900"
               >
                 Delete
               </button>
+
+      <button 
+          [routerLink]="['/dashboard/user/updateRole', role.name]" 
+          class="text-blue-600 hover:text-blue-900 ml-4"
+          >
+          Edit
+        </button>
+
+              
             </td>
+            
+            <!-- Custom Confirmation Modal -->
+            <div id="confirmModal" class="modal">
+              <div class="modal-content">
+                <p>Are you sure you want to delete <strong>{{ selectedRole }}</strong>?</p>
+                <button (click)="confirmDelete()" class="confirm-btn">Yes, Delete</button>
+                <button (click)="closeModal()" class="cancel-btn">Cancel</button>
+              </div>
+            </div>
           </tr>
         </tbody>
       </table>

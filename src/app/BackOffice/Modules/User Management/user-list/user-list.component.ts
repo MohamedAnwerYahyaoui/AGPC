@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDTO } from '../models/user-dto';
 import { UserServiceService } from '../services/users/user-service.service';
+import { RoleService } from '../services/roles/role.service';
 
 @Component({
   selector: 'app-user-list',
@@ -14,12 +15,31 @@ export class UserListComponent implements OnInit {
   selectedRole = '';
   currentPage = 0;
   pageSize = 5;
-  allRoles: string[] = ['Responsable', 'ADMIN','Employee']; // Fetch these from API if needed
+  allRoles: string[] = []; // Initialize empty array
 
-  constructor(private userService: UserServiceService) { }
+  errorMessage = '';
+
+  constructor(
+    private userService: UserServiceService,
+    private roleService: RoleService // Inject RoleService
+  ) { }
 
   ngOnInit() {
     this.loadUsers();
+    this.loadRoles(); // Add role loading
+  }
+
+  // Add this method to load roles
+  loadRoles() {
+    this.roleService.getAllRoles().subscribe({
+      next: (roles) => {
+        this.allRoles = roles.map(role => role.name);
+      },
+      error: (err) => {
+        console.error('Failed to load roles:', err);
+        this.errorMessage = 'Failed to load roles';
+      }
+    });
   }
 
   loadUsers() {
@@ -46,10 +66,37 @@ export class UserListComponent implements OnInit {
     return Math.ceil(this.filteredUsers.length / this.pageSize);
   }
 
-  deleteUser(userId: string) {
-    if (confirm('Are you sure you want to delete this user?')) {
-      this.userService.deleteUser(userId).subscribe(() => this.loadUsers());
+  selectedUser: string = '';
+
+  showConfirmModal(userName: string) {
+    this.selectedUser = userName;
+    const modal = document.getElementById('confirmModal');
+    if (modal) {
+      modal.style.display = 'block';
     }
   }
+  
+  closeModal() {
+    const modal = document.getElementById('confirmModal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  }
+  
+  confirmDelete() {
+    if (this.selectedUser) {
+      this.userService.deleteUser(this.selectedUser).subscribe({
+        next: () => {
+          this.loadUsers();
+          this.closeModal();
+        },
+        error: () => this.errorMessage = 'Failed to deactivate  user'
+      });
+    }
+  }
+
+  
+  
+  
 
 }

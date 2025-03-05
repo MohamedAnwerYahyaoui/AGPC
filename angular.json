@@ -35,7 +35,9 @@
               "src/assets/js/main.js",
   "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
   "node_modules/apexcharts/dist/apexcharts.min.js",
-  "node_modules/echarts/dist/echarts.min.js"
+  "node_modules/echarts/dist/echarts.min.js",
+  "node_modules/chart.js/dist/chart.umd.js"
+
 
             ]
           },
