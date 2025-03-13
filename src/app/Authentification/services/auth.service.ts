@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,23 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, { username, password }).pipe(
       tap((response: any) => {
-        // Store tokens and navigate to dashboard
+        const decodedToken: any = jwtDecode(response.access_token);
+        const roles = decodedToken.roles || []; // Extract roles from the token
+
         localStorage.setItem(this.tokenKey, JSON.stringify({
           access_token: response.access_token,
-          refresh_token: response.refresh_token
+          refresh_token: response.refresh_token,
+          username: decodedToken.preferred_username || username,
+          roles: roles // Store roles
         }));
         this.router.navigate(['/dashboard']);
       })
     );
+  }
+
+  getUsername(): string | null {
+    const tokens = JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+    return tokens.username || null;
   }
 
   logout(): void {
@@ -53,6 +63,15 @@ export class AuthService {
 
   private getTokens(): any {
     return JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+  }
+
+  getRoles(): string[] {
+    const tokens = JSON.parse(localStorage.getItem(this.tokenKey) || '{}');
+    return tokens.roles || [];
+  }
+
+  hasRole(role: string): boolean {
+    return this.getRoles().includes(role);
   }
 
 }

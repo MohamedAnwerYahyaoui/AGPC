@@ -7,11 +7,20 @@ import { AuthService } from 'src/app/Authentification/services/auth.service';
   styleUrls: ['./dashboard-nav-bar.component.css']
 })
 export class DashboardNavBarComponent {
-  constructor(private authService: AuthService) {}
+
+  username: string | null = null;
+  constructor(private authService: AuthService) {
+    this.username = authService.getUsername();
+  }
 
   onLogout() {
     this.authService.logout();
   }
+
+  
+
+  
+
  
 
 }

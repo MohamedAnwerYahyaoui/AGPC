@@ -27,6 +27,9 @@ import { RoleListComponent } from './BackOffice/Modules/User Management/role-man
 import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
 import { HomeUserComponent } from './BackOffice/Modules/User Management/home-user/home-user.component';
 import { UpdateComponent } from './BackOffice/Modules/User Management/role-management/update/update.component';
+import { UnauthorizedComponent } from './BackOffice/unauthorized/unauthorized.component';
+import { RoleGaurdService } from './Authentification/services/role-gaurd.service';
+import { RoleAssignmentComponent } from './BackOffice/Modules/User Management/role-management/role-assignment/role-assignment.component';
 
 const routes: Routes = [
  // Default Redirect to Client Home
@@ -50,8 +53,9 @@ const routes: Routes = [
  // Authentication
  { path: 'signin', component: SigninComponent },
  { path: 'signup', component: SignupComponent },
- { path: 'password-reset', component: WelcomNewUserComponent },
+ { path: 'password-reset', component: WelcomNewUserComponent }, 
  { path: 'forgotPassword', component: ForgotPasswordComponent },
+ { path: 'unauthorized', component: UnauthorizedComponent },
 
  // BackOffice Layout (Dashboard)
  {
@@ -59,20 +63,23 @@ const routes: Routes = [
    component: DashboardLayoutComponent,
    canActivate: [AuthGaurdservService],
    children: [
-     { path: '', component: DashboardHomeComponent },
-     { path: 'user/management-user', component: UserManagementComponent },
-     { path: 'user/management-profile', component: ProfileManagementComponent },
-     { path: 'user/addUser', component: AddUserComponent },
-     { path: 'user/userHome', component: HomeUserComponent },
-     { path: 'user/usersList', component: UserListComponent },
-     { path: 'user/createUser', component: CreateUserComponent },
-     { path: 'user/rolesList', component: RoleListComponent },
-     { path: 'user/updateRole/:name', component: UpdateComponent },
-     { path: 'user/createRole', component: CreateRoleComponent },
-     { path: 'livrable/tache-management', component: LivrableManagementComponent },
-     { path: 'ressource/ressource-management', component: RessourceManagementComponent },
+     { path: '', component: HomeUserComponent },
+     { path: 'user/management-user', component: UserManagementComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/management-profile', component: ProfileManagementComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/addUser', component: AddUserComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     
+     { path: 'user/RoleAssignment', component: RoleAssignmentComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }}, 
+     { path: 'user/usersList', component: UserListComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/createUser', component: CreateUserComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/rolesList', component: RoleListComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/updateRole/:name', component: UpdateComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] }},
+     { path: 'user/createRole', component: CreateRoleComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN'] } },
+     { path: 'livrable/tache-management', component: LivrableManagementComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN','Employee'] }},
+     { path: 'ressource/ressource-management', component: RessourceManagementComponent ,  canActivate: [RoleGaurdService], data: { roles: ['ADMIN','Employee'] }},
    ],
  },
+
+ 
 
  // Not Found Page
  { path: '**', component: NotFoundComponent },

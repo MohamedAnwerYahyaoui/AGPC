@@ -4,7 +4,7 @@
   <div class="d-flex align-items-center justify-content-between">
     <a routerLink="/dashboard" class="logo d-flex align-items-center no-underline">
       
-      <span class="d-none d-lg-block">TechRhot Admin</span>
+      <span class="d-none d-lg-block">TechRhot Construction </span>
     </a>
    
   </div><!-- End Logo -->
@@ -14,160 +14,16 @@
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center">
 
-     
-
-      <li class="nav-item dropdown">
-
-        <a class="nav-link nav-icon" data-bs-toggle="dropdown" href="#">
-          <i class="bi bi-bell"></i>
-          <span class="badge bg-primary badge-number">4</span>
-        </a><!-- End Notification Icon -->
-
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-          <li class="dropdown-header">
-            You have 4 new notifications
-            <a routerLink="/dashboard"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-exclamation-circle text-warning"></i>
-            <div>
-              <h4>Lorem Ipsum</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>30 min. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-x-circle text-danger"></i>
-            <div>
-              <h4>Atque rerum nesciunt</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>1 hr. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-check-circle text-success"></i>
-            <div>
-              <h4>Sit rerum fuga</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>2 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="notification-item">
-            <i class="bi bi-info-circle text-primary"></i>
-            <div>
-              <h4>Dicta reprehenderit</h4>
-              <p>Quae dolorem earum veritatis oditseno</p>
-              <p>4 hrs. ago</p>
-            </div>
-          </li>
-
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-          <li class="dropdown-footer">
-            <a routerLink="/dashboard">Show all notifications</a>
-          </li>
-
-        </ul><!-- End Notification Dropdown Items -->
-
-      </li><!-- End Notification Nav -->
-
-      <li class="nav-item dropdown">
-
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-          <i class="bi bi-chat-left-text"></i>
-          <span class="badge bg-success badge-number">3</span>
-        </a><!-- End Messages Icon -->
-
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-          <li class="dropdown-header">
-            You have 3 new messages
-            <a routerLink="/dashboard"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="message-item">
-            <a routerLink="/dashboard" class="no-underline">
-              <img src="assets/img/anwer.jpg" alt="" class="rounded-circle">
-              <div>
-                <h4>seif</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="message-item">
-            <a routerLink="/dashboard" class="no-underline">
-              <img src="assets/img/anwer.jpg" alt="" class="rounded-circle">
-              <div>
-                <h4>yassine</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>6 hrs. ago</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="message-item">
-            <a routerLink="/dashboard" class="no-underline">
-              <img src="assets/img/anwer.jpg" alt="" class="rounded-circle">
-              <div>
-                <h4>nabil</h4>
-                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                <p>8 hrs. ago</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li class="dropdown-footer">
-            <a routerLink="/dashboard">Show all messages</a>
-          </li>
-
-        </ul><!-- End Messages Dropdown Items -->
-
-      </li><!-- End Messages Nav -->
-
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="assets/img/anwer.jpg" alt="Profile" class="rounded-circle">
-          <span class="d-none d-md-block dropdown-toggle ps-2">Y. Mohamed anwer</span>
+          <span class="d-none d-md-block dropdown-toggle ps-2">{{username}}</span>
         </a><!-- End Profile Iamge Icon -->
 
         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6>Yahyaoui Mohamed anwer</h6>
-            <span>Super Admin</span>
+            <h6>{{username}}</h6>
+            
           </li>
           <li>
             <hr class="dropdown-divider">
@@ -198,15 +54,15 @@
             <hr class="dropdown-divider">
           </li>
 
-          <li>
-            <a class="dropdown-item d-flex align-items-center" >
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </li>
+          
 
         </ul><!-- End Profile Dropdown Items -->
       </li><!-- End Profile Nav -->
+
+      
+ 
+
+       
 
     </ul>
   </nav><!-- End Icons Navigation -->
@@ -233,13 +89,15 @@
        
       </a>
       <ul id="componentsDropdown" class="nav-content " style="display: none;">
-        
+
         <li>
-          <a routerLink="/dashboard/user/userHome" class="no-underline">
+          <a routerLink="/dashboard/user/management-user" class="no-underline">
             <i class="bi bi-circle"></i>
-            <span>user Home</span>
+            <span> management Overview</span>
           </a>
         </li>
+        
+        
 
         <li>
           <a routerLink="/dashboard/user/usersList" class="no-underline">
@@ -266,6 +124,13 @@
           <a routerLink="/dashboard/user/createRole" class="no-underline">
             <i class="bi bi-circle"></i>
             <span>create role</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/user/RoleAssignment" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>RoleAssignment</span>
           </a>
         </li>
         
@@ -313,6 +178,8 @@
         <span>Messagerie</span>
       </a>
     </li><!-- End Contact Page Nav -->
+
+    
 
     <li class="nav-item">
       <button class="nav-link" (click)="onLogout()" >

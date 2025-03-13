@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RoleRecord } from '../../models/role-record';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { RoleDTO } from '../../models/role-dto';
 
 @Injectable({
@@ -39,6 +39,28 @@ export class RoleService {
   }
   
 
+  assignRole(userId: string, roleName: string): Observable<any> {
+    return this.http.put(
+      `${this.apiUrl}/assign/users/${userId}`,
+      null,
+      { params: { roleName } }
+    ).pipe(
+      catchError((error) => {
+        throw new Error(error.error || 'Failed to assign role');
+      })
+    );
+  }
+
+  unassignRole(userId: string, roleName: string): Observable<any> {
+    return this.http.delete(
+      `${this.apiUrl}/remove/users/${userId}`,
+      { params: { roleName } }
+    ).pipe(
+      catchError((error) => {
+        throw new Error(error.error || 'Failed to remove role');
+      })
+    );
+  }
   
   
 }
