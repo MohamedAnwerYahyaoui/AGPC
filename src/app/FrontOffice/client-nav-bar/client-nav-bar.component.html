@@ -3,21 +3,28 @@
     <div class="flex justify-between h-20 items-center">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <a routerLink="/client" class="logo d-flex align-items-center no-underline">
-          <img src="assets/img/b.jpg" alt="">
-        <span class="d-none d-lg-block ">TechRhots</span>
+        <a routerLink="/client" class="logo flex items-center no-underline">
+          <img src="assets/img/b.jpg" alt="Logo">
+          <span id="logo-text" class="hidden lg:block ml-2">TechRhoots</span>
         </a>
       </div>
-      <!-- Center Links -->
+      
+      <!-- Liens Centraux -->
       <div class="hidden md:flex space-x-8">
-        <a routerLink="/client" class="text-gray-700 hover:text-indigo-600 transition duration-300 no-underline">Home</a>
-        <a routerLink="/client/about" class="text-gray-700 hover:text-indigo-600 transition duration-300 no-underline">About</a>
-        <a routerLink="/client/solutions" class="text-gray-700 hover:text-indigo-600 transition duration-300 no-underline">Solutions</a>
-        <a routerLink="/client/projects" class="text-gray-700 hover:text-indigo-600 transition duration-300 no-underline">Projects</a>
+        <a routerLink="/client" id="home-link" class="nav-link">Home</a>
+        <a routerLink="/client/about" id="about-link" class="nav-link">About</a>
+        <a routerLink="/client/solutions" id="solutions-link" class="nav-link">Solutions</a>
+        <a routerLink="/client/projects" id="projects-link" class="nav-link">Projects</a>
       </div>
-      <!-- Sign In Button -->
-      <div class="flex items-center">
-        <a routerLink="/signin" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300 no-underline">Sign In</a>
+      
+      <!-- Côté Droit -->
+      <div class="flex items-center space-x-4">
+   
+        
+        <!-- Bouton Sign In -->
+        <a routerLink="/signin" id="signin-link" class="signin-btn">
+          Sign In
+        </a>
       </div>
     </div>
   </div>

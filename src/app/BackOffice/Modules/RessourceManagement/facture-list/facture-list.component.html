@@ -1,0 +1,67 @@
+<main id="main" class="main">
+  <div class="container mt-4">
+    <h2>Liste des Factures</h2>
+    <button class="btn btn-success mb-3" routerLink="/dashboard/ajouter-facture">
+      <i class="fas fa-plus"></i>
+    </button>
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchTerm"
+        placeholder="Rechercher..."
+        (input)="filtrerFactures()"
+      />
+    </div>
+
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Commande ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let facture of filteredFactures | paginate: { itemsPerPage: 5, currentPage: page }">
+          <td>{{ facture.id }}</td>
+          <td>{{ facture.date | date:'dd/MM/yyyy' }}</td>
+          <td>{{ facture.totalAmount | currency:'EUR' }}</td>
+          <td>{{ facture.commande ? facture.commande.id : 'N/A' }}</td>
+          <td>
+            <button
+              class="btn btn-warning btn-sm"
+              [routerLink]="['/dashboard/modifier-facture', facture.id]"
+              title="Modifier"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteFacture(facture.id)"
+              title="Supprimer"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <button
+              class="btn btn-info btn-sm"
+              (click)="generatePDF(facture)"
+              title="Télécharger PDF"
+            >
+              <i class="fas fa-file-pdf"></i>
+            </button>
+            <!-- Bouton pour ouvrir la pop-up PayPal -->
+            <button class="btn btn-light btn-sm" (click)="openPaypalPopup(facture)">
+              <img src="assets/img/PayPal.png" alt="Payer avec PayPal" style="height: 50px;">
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</main>

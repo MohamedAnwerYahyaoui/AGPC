@@ -1,0 +1,60 @@
+<main id="main" class="main">
+  <div class="container mt-4">
+    
+    <h2>
+     Ajouter une Facture
+    </h2>
+
+   
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <form (ngSubmit)="saveFacture()" #factureForm="ngForm">
+   
+      <div class="form-group mt-3">
+        <label for="date">
+          <i class="fas fa-calendar-alt"></i> Date
+        </label>
+        <input type="date" class="form-control" id="date" [(ngModel)]="facture.date" name="date" required />
+        <div *ngIf="factureForm.controls['date']?.invalid && (factureForm.controls['date']?.dirty || factureForm.controls['date']?.touched)" class="text-danger">
+          La date est obligatoire.
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <label for="totalAmount">
+          <i class="fas fa-money-bill-wave"></i> Total
+        </label>
+        <input type="number" class="form-control" id="totalAmount" [(ngModel)]="facture.totalAmount" name="totalAmount" required min="0" />
+        <div *ngIf="factureForm.controls['totalAmount']?.invalid && (factureForm.controls['totalAmount']?.dirty || factureForm.controls['totalAmount']?.touched)" class="text-danger">
+          Le total doit être un nombre positif.
+        </div>
+      </div>
+
+     
+      <div class="form-group mt-3">
+        <label for="commande">
+          <i class="fas fa-shopping-cart"></i> Commande
+        </label>
+        <select class="form-control" id="commande" [(ngModel)]="facture.commande.id" name="commande" required>
+          <option *ngFor="let cmd of commandes" [value]="cmd.id">{{ cmd.id }} - {{ cmd.status }}</option>
+        </select>
+        <div *ngIf="factureForm.controls['commande']?.invalid && (factureForm.controls['commande']?.dirty || factureForm.controls['commande']?.touched)" class="text-danger">
+          La commande est obligatoire.
+        </div>
+      </div>
+
+      
+      <div class="button-container">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas {{ isEdit ? 'fa-save' : 'fa-plus' }}"></i>
+          {{ isEdit ? 'Modifier' : 'Ajouter' }}
+        </button>
+        <button type="button" class="btn btn-secondary" routerLink="/dashboard/commandes">
+          <i class="fas fa-times"></i> Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</main>

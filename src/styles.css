@@ -1,4 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Supprimez les directives @tailwind si vous ne voulez pas utiliser Tailwind */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~flag-icons/css/flag-icons.min.css';
+/* Ou utilisez du CSS standard si vous ne souhaitez pas Tailwind */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Dans styles.css */
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  right: 0;
+  top: 100% !important;
+}

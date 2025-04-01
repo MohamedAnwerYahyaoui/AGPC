@@ -1,0 +1,146 @@
+<main id="main" class="main">
+  <h2 class="centered-title">Liste des Matériaux</h2>
+  <!-- Section pour les prix du marché -->
+  <div class="market-data-section">
+    <div class="market-data-card">
+      <h3>
+        <i class="bi bi-graph-up"></i> 
+        Prix du Marché 
+        <button (click)="loadMarketData()" class="refresh-btn" [disabled]="loadingPrices">
+          <i class="bi" [class.bi-arrow-clockwise]="!loadingPrices" [class.bi-hourglass]="loadingPrices"></i>
+        </button>
+      </h3>
+  
+      <div *ngIf="loadingPrices" class="loading-message">
+        <i class="bi bi-hourglass"></i> Chargement des données...
+      </div>
+  
+      <div *ngIf="priceError" class="error-message">
+        <i class="bi bi-exclamation-triangle"></i> Erreur de chargement - Utilisation des valeurs par défaut
+      </div>
+  
+      <div *ngIf="!loadingPrices" class="price-grid">
+        <div class="price-item">
+          <span>Acier:</span>
+          <strong>
+            {{ marketData.acier | currency:'USD':'symbol':'1.2-2' }}/tonne
+            <i [class]="getTrendIcon(marketData.acierTrend)"></i>
+          </strong>
+        </div>
+        <div class="price-item">
+          <span>Ciment:</span>
+          <strong>
+            {{ marketData.ciment | currency:'USD':'symbol':'1.2-2' }}/tonne
+            <i [class]="getTrendIcon(marketData.cimentTrend)"></i>
+          </strong>
+        </div>
+        <div class="price-item">
+          <span>Bois:</span>
+          <strong>
+            {{ marketData.bois | currency:'USD':'symbol':'1.2-2' }}/1000bdft
+            <i [class]="getTrendIcon(marketData.boisTrend)"></i>
+          </strong>
+        </div>
+      </div>
+      <small *ngIf="marketData.lastUpdated" class="text-muted">
+        Mise à jour: {{ marketData.lastUpdated | date:'medium' }}
+      </small>
+    </div>
+  </div>
+
+  
+
+  <button class="add-button" (click)="goToAddMaterial()">+</button>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="applySearch()"
+      placeholder="Rechercher un matériau..."
+    />
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Catégorie</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let material of displayedMaterials" (click)="recommendMaterials(material)">
+        <td>
+          <ng-container *ngIf="editingMaterial?.id === material.id; else viewName">
+            <input [(ngModel)]="editingMaterial!.name" />
+          </ng-container>
+          <ng-template #viewName>{{ material.name }}</ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="editingMaterial?.id === material.id; else viewQuantity">
+            <input type="number" [(ngModel)]="editingMaterial!.quantity" />
+          </ng-container>
+          <ng-template #viewQuantity>{{ material.quantity }}</ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="editingMaterial?.id === material.id; else viewUnitPrice">
+            <input type="number" [(ngModel)]="editingMaterial!.unitPrice" />
+          </ng-container>
+          <ng-template #viewUnitPrice>{{ material.unitPrice | currency:'EUR':'symbol':'1.2-2' }}</ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="editingMaterial?.id === material.id; else viewCategorie">
+            <select [(ngModel)]="editingMaterial!.categorie">
+              <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+            </select>
+          </ng-container>
+          <ng-template #viewCategorie>{{ material.categorie }}</ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="editingMaterial?.id === material.id; else actions">
+            <button (click)="updateMaterial(); $event.stopPropagation()">Enregistrer</button>
+            <button (click)="cancelEdit(); $event.stopPropagation()">Annuler</button>
+          </ng-container>
+          <ng-template #actions>
+            <button (click)="startEdit(material); $event.stopPropagation()" class="icon-button">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn-danger icon-button" (click)="deleteMaterial(material.id!); $event.stopPropagation()">
+              <i class="bi bi-trash"></i>
+            </button>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isRecommending" class="recommendations">
+    <p><i class="bi bi-hourglass"></i> En train de rechercher des recommandations...</p>
+  </div>
+
+  <div *ngIf="recommendedMaterials.length > 0 && !isRecommending" class="recommendations">
+    <h3><i class="bi bi-lightbulb"></i> Matériaux Recommandés</h3>
+    <ul>
+      <li *ngFor="let material of recommendedMaterials">
+        {{ material.name }} - {{ material.categorie }} ({{ material.unitPrice | currency:'EUR':'symbol':'1.2-2' }})
+      </li>
+    </ul>
+  </div>
+
+  <div class="pagination">
+    <button
+      *ngFor="let page of getPages()"
+      (click)="changePage(page)"
+      [class.active]="page === currentPage"
+    >
+      {{ page }}
+    </button>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="materialChart"></canvas>
+  </div>
+</main>

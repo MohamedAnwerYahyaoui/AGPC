@@ -1,0 +1,80 @@
+<main id="main" class="main">
+  <div class="stock-list-container">
+    <h2>Liste des stocks</h2>
+    
+   
+    <div class="text-right mb-4">
+      <button class="btn-add" (click)="navigateToStockForm()">
+        <i class="fas fa-plus"></i> 
+      </button>
+    </div>
+    
+   
+    <div class="search-bar">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Rechercher par ID, Matériel, Quantité ou Seuil..." 
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()">
+    </div>
+    
+  
+    <div class="table-responsive">
+      <table class="stock-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Matériel</th>
+            <th>Quantité actuelle</th>
+            <th>Seuil</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of filteredStocks | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+            <td>{{ stock.id ?? 'N/A' }}</td>
+            <td>{{ stock.materiel.name }}</td>
+            <td>{{ stock.currentQuantity }}</td>
+            <td>{{ stock.threshold }}</td>
+            <td class="actions">
+             
+              <button class="btn-edit" (click)="editStock(stock.id ?? 0)">
+                <i class="fas fa-edit"></i> 
+              </button>
+
+            
+              <button class="btn-delete" (click)="deleteStock(stock.id ?? 0)">
+                <i class="fas fa-trash"></i> 
+              </button>
+
+             
+              <button 
+                class="btn-order"
+                *ngIf="stock.currentQuantity < stock.threshold"
+                (click)="addCommande(stock.id ?? 0)">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="filteredStocks.length === 0">
+            <td colspan="5" class="text-center text-danger">Aucun résultat trouvé</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+   
+    <div class="pagination-controls">
+      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+
+    
+    <div class="chart-container">
+      <h3>Statistiques des Matériaux</h3>
+      <div style="height: 400px;">
+        <canvas id="stockChart"></canvas>
+      </div>
+    </div>
+  </div>
+</main>

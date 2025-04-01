@@ -1,0 +1,148 @@
+/* Style global */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e1e6fb, #f2f6f8);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* Carte du formulaire */
+.card {
+  background: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* En-tête de la carte */
+.card-header {
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(135deg, #e5ebeb, #5a6ff6);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin: -2rem -2rem 2rem -2rem; /* Étendre l'en-tête sur toute la largeur */
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: 2rem;
+}
+
+/* Champs de formulaire */
+.form-control {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Étiquettes des champs */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #333;
+}
+
+/* Messages d'erreur */
+.text-danger {
+  font-size: 0.875rem;
+  color: #6d030d;
+  margin-top: 0.25rem;
+}
+
+/* Boutons */
+.btn {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem; /* Espacement entre les boutons */
+  text-align: center;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #100bff, #0e29f9);
+  color: #fff;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #2320e6, #25a1ff);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #495057, #343a40);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
+/* Effet de survol général pour les boutons */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation pour les champs invalides */
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}

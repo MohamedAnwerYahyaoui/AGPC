@@ -1,0 +1,20 @@
+.language-selector {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 50;
+  }
+  
+  .language-selector select {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .language-selector select:hover {
+    background-color: white;
+  }

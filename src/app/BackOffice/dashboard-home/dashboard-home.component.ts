@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as ApexCharts from 'apexcharts';
 import * as echarts from 'echarts';
+import { TranslationService } from '../Modules/RessourceManagement/translation.service';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -15,6 +16,10 @@ export class DashboardHomeComponent implements AfterViewInit{
     this.initBudgetChart();
     this.initTrafficChart();
   }
+  constructor(
+    private translationService: TranslationService,
+    // ... autres services ...
+  ) {}
 
   private initApexChart(): void {
     const chart = new ApexCharts(document.querySelector("#reportsChart") as HTMLElement, {
@@ -121,5 +126,6 @@ export class DashboardHomeComponent implements AfterViewInit{
   private initTrafficChart(): void {
     // Add additional chart initializations here if needed
   }
+  
 
 }

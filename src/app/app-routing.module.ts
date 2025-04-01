@@ -8,7 +8,6 @@ import { DashboardHomeComponent } from './BackOffice/dashboard-home/dashboard-ho
 import { UserManagementComponent } from './BackOffice/Modules/User Management/user-management/user-management.component';
 import { ProfileManagementComponent } from './BackOffice/Modules/User Management/profile-management/profile-management.component';
 import { LivrableManagementComponent } from './BackOffice/Modules/Livrable Management/livrable-management/livrable-management.component';
-import { RessourceManagementComponent } from './BackOffice/Modules/Ressource Management/ressource-management/ressource-management.component';
 import { AboutComponent } from './FrontOffice/about/about.component';
 import { SolutionsComponent } from './FrontOffice/solutions/solutions.component';
 import { OurClientsComponent } from './FrontOffice/our-clients/our-clients.component';
@@ -20,58 +19,72 @@ import { CommercialProjectComponent } from './FrontOffice/commercial-project/com
 import { WelcomNewUserComponent } from './Authentification/welcom-new-user/welcom-new-user.component';
 import { AddUserComponent } from './BackOffice/Modules/User Management/add-user/add-user.component';
 import { ForgotPasswordComponent } from './Authentification/forgot-password/forgot-password.component';
-import { AuthGaurdservService } from './Authentification/services/auth-gaurdserv.service';
-import { UserListComponent } from './BackOffice/Modules/User Management/user-list/user-list.component';
-import { CreateUserComponent } from './BackOffice/Modules/User Management/create-user/create-user.component';
-import { RoleListComponent } from './BackOffice/Modules/User Management/role-management/role-list/role-list.component';
-import { CreateRoleComponent } from './BackOffice/Modules/User Management/role-management/create-role/create-role.component';
-
+import { ListFournisseursComponent }  from './BackOffice/Modules/RessourceManagement/list-fournisseurs/list-fournisseurs.component';
+import { AddFournisseurComponent } from './BackOffice/Modules/RessourceManagement/add-fournisseur/add-fournisseur.component';
+import { ListMaterialsComponent } from './BackOffice/Modules/RessourceManagement/list-materials/list-materials.component';
+import { AddMaterialComponent } from './BackOffice/Modules/RessourceManagement/add-material/add-material.component';
+import { StockFormComponent } from './BackOffice/Modules/RessourceManagement/stock-form/stock-form.component';
+import { StockListComponent } from './BackOffice/Modules/RessourceManagement/stock-list/stock-list.component';
+import { ListeCommandesComponent } from './BackOffice/Modules/RessourceManagement/liste-commandes/liste-commandes.component';
+import { CommandeFormComponent } from './BackOffice/Modules/RessourceManagement/commande-form/commande-form.component';
+import { FactureFormComponent } from './BackOffice/Modules/RessourceManagement/facture-form/facture-form.component';
+import { FactureListComponent } from './BackOffice/Modules/RessourceManagement/facture-list/facture-list.component';
 const routes: Routes = [
- // Default Redirect to Client Home
- { path: '', redirectTo: '/client', pathMatch: 'full' },
+  // Default Redirect to Client Home
+  { path: '', redirectTo: '/client', pathMatch: 'full' },
 
- // FrontOffice Layout
- {
-   path: 'client',
-   component: ClientLayoutComponent,
-   children: [
-     { path: '', component: HomeComponent },
-     { path: 'about', component: AboutComponent },
-     { path: 'solutions', component: SolutionsComponent },
-     { path: 'projects', component: OurClientsComponent },
-     { path: 'projects/infrastructureProject', component: InfrastructureProjectComponent },
-     { path: 'projects/residentialProject', component: ResidentialProjectComponent },
-     { path: 'projects/commercialProject', component: CommercialProjectComponent },
-   ],
- },
+  // FrontOffice Layout
+  {
+    path: 'client',
+    component: ClientLayoutComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'solutions', component: SolutionsComponent },
+      { path: 'projects', component: OurClientsComponent },
+      { path: 'projects/infrastructureProject', component: InfrastructureProjectComponent },
+      { path: 'projects/residentialProject', component: ResidentialProjectComponent },
+      { path: 'projects/commercialProject', component: CommercialProjectComponent },
+    ],
+  },
 
- // Authentication
- { path: 'signin', component: SigninComponent },
- { path: 'signup', component: SignupComponent },
- { path: 'welcome', component: WelcomNewUserComponent },
- { path: 'forgotPassword', component: ForgotPasswordComponent },
+  // Authentication
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'welcome', component: WelcomNewUserComponent },
+  { path: 'forgotPassword', component: ForgotPasswordComponent },
 
- // BackOffice Layout (Dashboard)
- {
-   path: 'dashboard',
-   component: DashboardLayoutComponent,
-   canActivate: [AuthGaurdservService],
-   children: [
-     { path: '', component: DashboardHomeComponent },
-     { path: 'user/management-user', component: UserManagementComponent },
-     { path: 'user/management-profile', component: ProfileManagementComponent },
-     { path: 'user/addUser', component: AddUserComponent },
-     { path: 'user/usersList', component: UserListComponent },
-     { path: 'user/createUser', component: CreateUserComponent },
-     { path: 'user/rolesList', component: RoleListComponent },
-     { path: 'user/createRole', component: CreateRoleComponent },
-     { path: 'livrable/tache-management', component: LivrableManagementComponent },
-     { path: 'ressource/ressource-management', component: RessourceManagementComponent },
-   ],
- },
+  // BackOffice Layout (Dashboard)
+  {
+    path: 'dashboard',
+    component: DashboardLayoutComponent,
+    children: [
+      { path: '', component: DashboardHomeComponent },
+      { path: 'user/management-user', component: UserManagementComponent },
+      { path: 'user/management-profile', component: ProfileManagementComponent },
+      { path: 'user/addUser', component: AddUserComponent },
+      { path: 'livrable/tache-management', component: LivrableManagementComponent },
+      { path: 'add-fournisseur', component: AddFournisseurComponent }, // ✅ Route pour AddFournisseur
+      { path: 'list-fournisseurs', component: ListFournisseursComponent }, // ✅ Route pour ListFournisseurs
+       { path: 'list-materials', component: ListMaterialsComponent },
+       { path: 'add-material', component: AddMaterialComponent },
+       { path: 'dashboard/stock-form/:id', component: StockFormComponent },
+      { path: 'stock-form', component: StockFormComponent },
+       { path: 'stock-list', component: StockListComponent },
+       { path: 'commandes', component: ListeCommandesComponent },
+       { path: 'commande/add', component: CommandeFormComponent },
+       { path: 'commande/edit/:id', component: CommandeFormComponent },
+       { path: '', redirectTo: '/commandes', pathMatch: 'full' },
+       { path: 'factures', component: FactureListComponent },
+       { path: 'ajouter-facture', component: FactureFormComponent },
+       { path: 'modifier-facture/:id', component: FactureFormComponent },
+       { path: '', redirectTo: '/factures', pathMatch: 'full' }
 
- // Not Found Page
- { path: '**', component: NotFoundComponent },
+    ],
+  },
+
+  // Not Found Page
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

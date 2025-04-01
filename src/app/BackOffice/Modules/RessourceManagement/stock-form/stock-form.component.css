@@ -1,0 +1,209 @@
+/* Style global */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #fdffff, #2530fc);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Carte du formulaire */
+.card {
+  background: #ffffff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  margin: 1rem;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* En-tête de la carte */
+/* En-tête de la carte */
+.card-header {
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(135deg, #b7b8b9, #3869fa);
+  color: #4169E1; /* Changement de la couleur du texte en bleu roi */
+  font-weight: bold;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  animation: fadeInDown 0.5s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: 2rem;
+}
+
+/* Champs de formulaire */
+.form-control {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: #010cd5;
+  box-shadow: 0 0 10px rgba(97, 244, 255, 0.3);
+  transform: scale(1.02);
+}
+
+/* Boutons */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-gradient-success {
+  background: linear-gradient(135deg, #1a02f1, #2109f6);
+  color: #fff;
+}
+
+.btn-gradient-success:hover {
+  background: linear-gradient(135deg, #4553a0, #3d4b8b);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(19, 159, 240, 0.4);
+}
+
+/* Messages d'erreur */
+.text-danger {
+  color: #63ccf6;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+/* Styles pour la notification */
+.notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #4169E1; /* Bleu roi */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* Styles pour SweetAlert2 */
+.swal2-popup {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.swal2-title {
+  font-size: 1.5rem;
+  color: #4169E1; /* Bleu roi */
+}
+
+.swal2-confirm {
+  background-color: #4169E1 !important; /* Bleu roi */
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.swal2-confirm:hover {
+  background-color: #3556A0 !important; /* Bleu roi plus foncé */
+  transform: scale(1.05);
+}
+
+.swal2-cancel {
+  background-color: #6c757d !important;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.swal2-cancel:hover {
+  background-color: #5a6268 !important;
+  transform: scale(1.05);
+}
