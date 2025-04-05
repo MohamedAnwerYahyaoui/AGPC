@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>{{isEdit ? 'Modifier' : 'Créer'}} Livrable</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="dialog-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" required>
+      <mat-error *ngIf="nom?.invalid && (nom?.dirty || nom?.touched)">
+        Le nom doit contenir au moins 3 caractères.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date de livraison</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateLivraison">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="dateLivraison?.invalid && (dateLivraison?.dirty || dateLivraison?.touched)">
+        La date de livraison est obligatoire et ne peut pas être antérieure à la date actuelle.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="submit()"
+    [disabled]="form.invalid">
+    {{isEdit ? 'Modifier' : 'Créer'}}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+.form-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+}
+
+mat-error {
+  font-size: 0.9rem;
+  color: #f44336;
+}

@@ -1,0 +1,73 @@
+<form [formGroup]="tacheForm" (ngSubmit)="onSubmit()">
+  <!-- Champ Nom -->
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom" required>
+    <mat-error *ngIf="tacheForm.get('nom')?.hasError('required')">
+      Le nom est requis.
+    </mat-error>
+    <mat-error *ngIf="tacheForm.get('nom')?.hasError('minlength')">
+      Le nom doit contenir au moins 3 caractères.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Champ Description -->
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <!-- Champ Statut -->
+  <mat-form-field appearance="fill">
+    <mat-label>Statut</mat-label>
+    <mat-select formControlName="status" required>
+      <mat-option *ngFor="let status of statusValues" [value]="status">
+        {{ status }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tacheForm.get('status')?.hasError('required')">
+      Le statut est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Champ Date de début -->
+  <mat-form-field appearance="fill">
+    <mat-label>Date de début</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="dateDebut" required>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+    <mat-error *ngIf="tacheForm.get('dateDebut')?.hasError('required')">
+      La date de début est requise.
+    </mat-error>
+    <mat-error *ngIf="tacheForm.get('dateDebut')?.hasError('dateBeforeToday')">
+      La date de début ne peut pas être antérieure à aujourd'hui.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Champ Date de fin -->
+  <mat-form-field appearance="fill">
+    <mat-label>Date de fin</mat-label>
+    <input matInput [matDatepicker]="picker2" formControlName="dateFin">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <!-- Champ Utilisateur -->
+  <mat-form-field appearance="fill">
+    <mat-label>Utilisateur</mat-label>
+    <mat-select formControlName="userId" required>
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{ user.username }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tacheForm.get('userId')?.hasError('required')">
+      L'utilisateur est requis.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Boutons -->
+  <div class="form-actions">
+    <button mat-button type="button" (click)="onCancel()">Annuler</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="tacheForm.invalid">Enregistrer</button>
+  </div>
+</form>

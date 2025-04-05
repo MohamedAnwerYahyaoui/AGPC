@@ -1,0 +1,123 @@
+<main id="main" class="main">
+  <div class="kanban-container">
+    <div class="kanban-header">
+      <h1>Tableau Kanban des Tâches</h1>
+      <button mat-raised-button color="primary" (click)="openTacheDialog()">
+        <mat-icon>add</mat-icon> Nouvelle Tâche
+      </button>
+    </div>
+
+    <div class="kanban-board">
+      <!-- Colonne À Faire -->
+      <div class="kanban-column">
+        <div class="column-header todo">
+          <h2>À Faire</h2>
+        </div>
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todoTaches"
+          [cdkDropListConnectedTo]="[inProgressList, doneList]"
+          id="todo-list"
+          class="task-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="task-card" *ngFor="let tache of todoTaches" cdkDrag>
+            <div class="task-header">
+              <h3>{{ tache.nom }}</h3>
+              <div class="task-actions">
+                <button mat-icon-button (click)="openTacheDialog(tache)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteTache(tache.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <p class="task-description">{{ tache.description }}</p>
+            <div class="task-details">
+              <span class="dates">
+                {{ tache.dateDebut | date:'dd/MM/yyyy' }} - {{ tache.dateFin | date:'dd/MM/yyyy' }}
+              </span>
+              <span class="assignee">Assigné à : {{ tache.userNom }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne En Cours -->
+      <div class="kanban-column">
+        <div class="column-header in-progress">
+          <h2>En Cours</h2>
+        </div>
+        <div
+          cdkDropList
+          #inProgressList="cdkDropList"
+          [cdkDropListData]="inProgressTaches"
+          [cdkDropListConnectedTo]="[todoList, doneList]"
+          id="in-progress-list"
+          class="task-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="task-card" *ngFor="let tache of inProgressTaches" cdkDrag>
+            <div class="task-header">
+              <h3>{{ tache.nom }}</h3>
+              <div class="task-actions">
+                <button mat-icon-button (click)="openTacheDialog(tache)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteTache(tache.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <p class="task-description">{{ tache.description }}</p>
+            <div class="task-details">
+              <span class="dates">
+                {{ tache.dateDebut | date:'dd/MM/yyyy' }} - {{ tache.dateFin | date:'dd/MM/yyyy' }}
+              </span>
+              <span class="assignee">Assigné à : {{ tache.userNom }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne Terminé -->
+      <div class="kanban-column">
+        <div class="column-header done">
+          <h2>Terminé</h2>
+        </div>
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="doneTaches"
+          [cdkDropListConnectedTo]="[todoList, inProgressList]"
+          id="done-list"
+          class="task-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="task-card" *ngFor="let tache of doneTaches" cdkDrag>
+            <div class="task-header">
+              <h3>{{ tache.nom }}</h3>
+              <div class="task-actions">
+                <button mat-icon-button (click)="openTacheDialog(tache)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteTache(tache.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <p class="task-description">{{ tache.description }}</p>
+            <div class="task-details">
+              <span class="dates">
+                {{ tache.dateDebut | date:'dd/MM/yyyy' }} - {{ tache.dateFin | date:'dd/MM/yyyy' }}
+              </span>
+              <span class="assignee">Assigné à : {{ tache.userNom }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

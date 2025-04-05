@@ -1,0 +1,22 @@
+.custom-calendar {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.fc-event {
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.85em;
+  padding: 2px 4px;
+}
+
+.fc-event-status {
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* Couleurs selon le statut */
+.fc-event-en-cours { background-color: #ffc107; border-color: #ffc107; }
+.fc-event-termine { background-color: #28a745; border-color: #28a745; }
+.fc-event-en-attente { background-color: #17a2b8; border-color: #17a2b8; }
