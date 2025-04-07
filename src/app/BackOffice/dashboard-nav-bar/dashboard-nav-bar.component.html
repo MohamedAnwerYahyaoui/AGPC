@@ -1,0 +1,153 @@
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="d-flex align-items-center justify-content-between">
+    <a routerLink="/dashboard" class="logo d-flex align-items-center no-underline">
+      <span class="d-none d-lg-block">TechRhot Admin</span>
+    </a>
+  </div><!-- End Logo -->
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <!-- Notifications -->
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" data-bs-toggle="dropdown" href="#">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-primary badge-number">4</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+          <li class="dropdown-header">
+            You have 4 new notifications
+            <a routerLink="/dashboard">
+              <span class="badge rounded-pill bg-primary p-2 ms-2">View all</span>
+            </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li class="notification-item">
+            <i class="bi bi-exclamation-circle text-warning"></i>
+            <div>
+              <h4>Lorem Ipsum</h4>
+              <p>Quae dolorem earum veritatis oditseno</p>
+              <p>30 min. ago</p>
+            </div>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li class="dropdown-footer">
+            <a routerLink="/dashboard">Show all notifications</a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Profile -->
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="assets/img/anwer.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2">Y. Mohamed Anwer</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <li class="dropdown-header">
+            <h6>Yahyaoui Mohamed Anwer</h6>
+            <span>Super Admin</span>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" routerLink="/dashboard/user/management-profile">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" routerLink="/signin">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+<!-- ======= End Header ======= -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+    <!-- User Management -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('componentsDropdown')">
+        <i class="bi bi-menu-button-wide"></i>
+        <span>User Management</span>
+      </a>
+      <ul id="componentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/user/management-user" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Users</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/user/addUser" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add User</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Other Components -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('otherComponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>Other Components</span>
+      </a>
+      <ul id="otherComponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/documentation/add" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Add Document</span>
+          </a>
+          <a routerLink="/dashboard/assurance/add" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Add Insurance</span>
+          </a>
+          <a routerLink="/dashboard/assurance/list" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Insurance</span>
+          </a>
+          <a routerLink="/dashboard/documentation/list" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Documents</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-heading">Other</li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard/user/management-profile">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/signin">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+
+  </ul>
+</aside>
+<!-- ======= End Sidebar ======= -->

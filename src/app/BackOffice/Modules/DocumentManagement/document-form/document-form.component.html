@@ -1,0 +1,67 @@
+<main id="main" class="main">
+  <!-- Title above the form -->
+  <h3 class="text-center mb-4 text-primary">💎 Gestion des Documents 💎</h3>
+
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 600px;">
+      <form [formGroup]="documentForm" (ngSubmit)="soumettreFormulaire()">
+        <!-- Document Name -->
+        <div class="mb-4">
+          <label class="form-label">Nom du document</label>
+          <input type="text" class="form-control" formControlName="nom" placeholder="Entrez le nom du document" />
+          <div *ngIf="nomInvalid" class="text-danger">Le nom est obligatoire et doit avoir au moins 3 caractères.</div>
+        </div>
+
+        <!-- Document Type -->
+        <div class="mb-4">
+          <label class="form-label">Type de document</label>
+          <select class="form-control" formControlName="typeD">
+            <option *ngFor="let type of typeDocuments" [value]="type">{{ type }}</option>
+          </select>
+          <div *ngIf="typeDInvalid" class="text-danger">Le type de document est obligatoire.</div>
+        </div>
+
+        <!-- Creation Date -->
+        <div class="mb-4">
+          <label class="form-label">Date de création</label>
+          <input type="datetime-local" class="form-control" formControlName="dateCreation" />
+          <div *ngIf="dateCreationInvalid" class="text-danger">La date de création est obligatoire.</div>
+        </div>
+
+        <!-- Assurance -->
+        <div class="mb-4">
+          <label class="form-label">Assurance</label>
+          <select class="form-control" formControlName="assuranceId">
+            <option *ngFor="let assurance of assurances" [value]="assurance.id">{{ assurance.nom }}</option>
+          </select>
+          <div *ngIf="assuranceIdInvalid" class="text-danger">L'assurance est obligatoire.</div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="mb-4" *ngIf="!isEditMode || isEditMode">
+          <label class="form-label">Télécharger un fichier</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" />
+          <div *ngIf="cheminFichierInvalid" class="text-danger">Le fichier est obligatoire.</div>
+        </div>
+
+        <!-- Current file display for Edit mode -->
+        <div class="mb-4" *ngIf="isEditMode && nouveauDocument.cheminFichier">
+          <p>Fichier actuel : <strong>{{ nouveauDocument.cheminFichier }}</strong></p>
+        </div>
+
+        <!-- Submit and Navigation Buttons -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-5" [disabled]="!documentForm.valid">
+            <i class="bi bi-save"></i> {{ isEditMode ? 'Mettre à jour' : 'Enregistrer' }}
+          </button>
+          <a routerLink="/dashboard/documentation/list" class="btn btn-outline-secondary ms-3">
+            <i class="bi bi-list"></i> Voir la liste
+          </a>
+        </div>
+
+        <!-- Toast Message -->
+        <div *ngIf="toastMessage" class="alert alert-info mt-3">{{ toastMessage }}</div>
+      </form>
+    </div>
+  </div>
+</main>

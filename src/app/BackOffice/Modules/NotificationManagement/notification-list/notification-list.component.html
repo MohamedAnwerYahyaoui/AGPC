@@ -1,0 +1,11 @@
+<div *ngIf="notifications && notifications.length > 0">
+    <ul>
+      <li *ngFor="let notification of notifications">
+        {{ notification.message }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="notifications && notifications.length === 0">
+    Aucune notification trouvée.
+  </div>
+  
