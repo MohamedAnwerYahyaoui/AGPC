@@ -1,0 +1,90 @@
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Réduction minimale */
+    gap: 1rem; /* Réduction de l'espacement */
+    padding: 0.75rem;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 6px; /* Légère réduction du border-radius */
+    border-top: 3px solid #2196F3; /* Réduction de la bordure */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px); /* Moins d'élévation */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-header {
+    background-color: #2196F3;
+    color: #fff;
+    padding: 0.6rem; /* Légère réduction du padding */
+    border-radius: 6px 6px 0 0;
+    font-weight: 600;
+    font-size: 1rem; /* Taille de texte réduite */
+    text-align: center;
+  }
+  
+  .card-body {
+    padding: 0.85rem; /* Moins d'espace pour plus de compacité */
+    color: #555;
+  }
+  
+  .card-body p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem; /* Ajustement de la taille du texte */
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem;
+  }
+  
+  .card-actions button {
+    padding: 0.4rem 0.8rem; /* Boutons plus compacts */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary.btn-sm {
+    background-color: #2196F3;
+    color: #fff;
+  }
+  
+  .btn-primary.btn-sm:hover {
+    background-color: #1976D2;
+  }
+  
+  .btn-danger.btn-sm {
+    background-color: #e53935;
+    color: #fff;
+  }
+  
+  .btn-danger.btn-sm:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Centrer le titre de la liste */
+  .container h2 {
+    text-align: center;
+    font-size: 1.4rem; /* Ajustement de la taille */
+  }
+  .container h2 {
+    text-align: center; /* Centrage du titre */
+    font-size: 1.6rem; /* Taille de police légèrement augmentée */
+    color: #2196F3; /* Couleur bleue pour correspondre au thème */
+    margin-bottom: 1.5rem; /* Espacement en dessous du titre */
+    font-weight: 600; /* Texte en gras */
+    text-transform: uppercase; /* Texte en majuscules */
+    letter-spacing: 1px; /* Espacement entre les lettres */
+  }
+  
+  

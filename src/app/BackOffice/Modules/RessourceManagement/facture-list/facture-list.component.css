@@ -1,0 +1,186 @@
+
+/* === Container Principal === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fcfafa;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* === Titre === */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* === Bouton Ajouter Facture === */
+button.btn-success {
+    background-color: #2200ff;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.btn-success:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* === Barre de Recherche === */
+input.form-control {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* === Tableau === */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #e9e6e6;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(238, 237, 237, 0.1);
+}
+
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody tr:hover {
+    background-color: #e9f5ff;
+    transition: background-color 0.3s ease;
+}
+
+/* === Boutons d'Actions === */
+.btn-sm {
+    margin-right: 5px; /* Espacement entre les boutons */
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* Alignement des icônes et texte */
+    align-items: center;
+    justify-content: center;
+}
+
+button.btn-warning {
+    background-color: #102bf8; /* Cyan clair pour Modifier */
+    color: #212529;
+    border-color: #0a1eff;
+}
+
+button.btn-warning:hover {
+    background-color: #0092e0;
+    transform: translateY(-2px);
+}
+
+button.btn-danger {
+    background-color: #ff6574; /* Rouge pour Supprimer */
+    color: white;
+    border: none;
+}
+
+button.btn-danger:hover {
+    background-color: #e63950;
+    transform: translateY(-2px);
+}
+
+button.btn-info {
+    background-color: #eff6f0; /* Vert pour Télécharger PDF */
+    color: rgb(6, 0, 0);
+    border: none;
+}
+
+button.btn-info:hover {
+    background-color: #868987;
+    transform: translateY(-2px);
+}
+
+button.btn-primary {
+    background-color: #007bff; /* Bleu pour Payer (style PayPal) */
+    color: white;
+    border: none;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3; /* Bleu foncé au survol */
+    transform: translateY(-2px);
+}
+
+/* === Pop-up SweetAlert2 === */
+.swal2-popup {
+    padding-bottom: 20px;
+}
+
+/* === Pagination === */
+pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    button.btn-success {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .btn-sm {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

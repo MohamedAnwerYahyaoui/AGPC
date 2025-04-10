@@ -1,0 +1,32 @@
+<main id="main" class="main">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Vérifier un congé</h4>
+          </div>
+          <div class="card-body">
+            <div>
+              <label for="congeeNom">Nom du congé :</label>
+              <input
+                type="text"
+                id="congeeNom"
+                [(ngModel)]="congeeNom"
+                placeholder="Nom du congé"
+              />
+            </div>
+            <div *ngIf="remainingDays !== null" class="mt-3">
+              <div class="alert alert-info">
+                Il reste <strong>{{ remainingDays }}</strong> jours de congé.
+              </div>
+            </div>
+            <button class="btn btn-success w-100 mt-3" (click)="onCheck()">
+              Vérifier
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

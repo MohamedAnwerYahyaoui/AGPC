@@ -1,0 +1,100 @@
+<main id="main" class="main">
+    <div class="container">
+     
+      <h2>
+        Ajouter une Commande
+      </h2>
+  
+      <form (ngSubmit)="saveCommande(commandeForm)" #commandeForm="ngForm">
+      
+        <div class="form-group">
+          <label for="date">
+            <i class="fas fa-calendar-alt"></i> Date
+          </label>
+          <input
+            type="date"
+            class="form-control"
+            id="date"
+            [(ngModel)]="commande.date"
+            name="date"
+            required
+          />
+          <div class="error-message" *ngIf="(submitted || commandeForm.controls['date']?.touched) && commandeForm.controls['date']?.invalid">
+            La date est obligatoire.
+          </div>
+        </div>
+  
+       
+        <div class="form-group">
+          <label for="status">
+            <i class="fas fa-tasks"></i> Statut
+          </label>
+          <select
+            class="form-control"
+            id="status"
+            [(ngModel)]="commande.status"
+            name="status"
+            required
+          >
+            <option value="EN_ATTENTE">En Attente</option>
+            <option value="EN_COURS">En Cours</option>
+            <option value="LIVREE">Livrée</option>
+          </select>
+          <div class="error-message" *ngIf="(submitted || commandeForm.controls['status']?.touched) && commandeForm.controls['status']?.invalid">
+            Le statut est obligatoire.
+          </div>
+        </div>
+  
+       
+        <div class="form-group">
+          <label for="totalAmount">
+            <i class="fas fa-money-bill-wave"></i> Montant Total
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            id="totalAmount"
+            [(ngModel)]="commande.totalAmount"
+            name="totalAmount"
+            required
+            min="0"
+          />
+          <div class="error-message" *ngIf="(submitted || commandeForm.controls['totalAmount']?.touched) && commandeForm.controls['totalAmount']?.invalid">
+            <div *ngIf="commandeForm.controls['totalAmount']?.errors?.['required']">Le montant total est obligatoire.</div>
+            <div *ngIf="commandeForm.controls['totalAmount']?.errors?.['min']">Le montant total ne peut pas être négatif.</div>
+          </div>
+        </div>
+  
+     
+        <div class="form-group">
+          <label for="fournisseur">
+            <i class="fas fa-truck"></i> Fournisseur
+          </label>
+          <select
+            class="form-control"
+            id="fournisseur"
+            [(ngModel)]="commande.fournisseur.id"
+            name="fournisseur"
+            required
+          >
+            <option *ngFor="let fournisseur of fournisseurs" [value]="fournisseur.id">
+              {{ fournisseur.name }}
+            </option>
+          </select>
+          <div class="error-message" *ngIf="(submitted || commandeForm.controls['fournisseur']?.touched) && commandeForm.controls['fournisseur']?.invalid">
+            Le fournisseur est obligatoire.
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-primary">
+          <i class="fas {{ isEditMode ? 'fa-save' : 'fa-plus' }}"></i>
+          {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+        </button>
+  
+      
+        <button type="button" class="btn btn-secondary" (click)="goToStockList()">
+         Voir les Stocks
+        </button>
+      </form>
+    </div>
+  </main>

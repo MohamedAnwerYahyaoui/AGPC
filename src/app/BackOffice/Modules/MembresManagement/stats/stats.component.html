@@ -1,0 +1,29 @@
+<main id="main" class="main">
+<div class="container">
+  <h2>Statistiques</h2>
+
+  <!-- Bar Chart -->
+  <div class="chart-container">
+    <h3>Contrats par Type</h3>
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      type="bar"
+    >
+    </canvas>
+  </div>
+
+  <!-- Pie Chart -->
+  <div class="chart-container">
+    <h3>Congés par Statut</h3>
+    <canvas
+      baseChart
+      [data]="pieChartData"
+      [options]="pieChartOptions"
+      type="pie"
+    >
+    </canvas>
+  </div>
+</div>
+</main>

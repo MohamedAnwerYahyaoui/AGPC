@@ -1,0 +1,92 @@
+<main id="main" class="main">
+  <div class="container mt-4">
+    <h2>Liste des membres</h2>
+    
+    <!-- Recherche avancée et filtres -->
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="resetPage()"
+          placeholder="Recherche avancée"
+          class="form-control"
+        />
+      </div>
+      <div class="col-md-4">
+        <select
+          [(ngModel)]="selectedContrat"
+          (ngModelChange)="resetPage()"
+          class="form-control"
+        >
+          <option value="">Tous les contrats</option>
+          <option *ngFor="let contrat of contrats" [value]="contrat.id">
+            {{ contrat.contrat }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select
+          [(ngModel)]="selectedEquipe"
+          (ngModelChange)="resetPage()"
+          class="form-control"
+        >
+          <option value="">Toutes les équipes</option>
+          <option *ngFor="let equipe of equipes" [value]="equipe.id">
+            {{ equipe.nom || equipe.intitule }}
+          </option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Liste des membres avec pagination -->
+    <div class="cards-container">
+      <div
+        class="card"
+        *ngFor="
+          let employe of (employees
+            | filter : searchTerm : selectedContrat : selectedEquipe
+            | paginate : { itemsPerPage: 5, currentPage: page }
+          )
+        "
+      >
+        <div class="card-header">
+          {{ employe.nom }} {{ employe.prenom }}
+        </div>
+        <div class="card-body">
+          <p><strong>Poste:</strong> {{ employe.poste }}</p>
+          <p><strong>Email:</strong> {{ employe.email }}</p>
+          <p><strong>Téléphone:</strong> {{ employe.telephone }}</p>
+          <p>
+            <strong>Salaire:</strong>
+            {{ employe.salaire | number: '1.0-0' }} TND
+          </p>
+          <p>
+            <strong>Date d'embauche:</strong>
+            {{ employe.dateEmbauche | date: 'dd/MM/yyyy' }}
+          </p>
+          <p><strong>Contrat ID:</strong> {{ employe.contrat?.id }}</p>
+          <p><strong>Équipe ID:</strong> {{ employe.equipe?.id }}</p>
+        </div>
+        <div class="card-actions">
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="editEmploye(employe.id!)"
+          >
+            Modifier
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="deleteEmploye(employe.id!)"
+          >
+            Supprimer
+          </button>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- Contrôles de pagination -->
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</main>

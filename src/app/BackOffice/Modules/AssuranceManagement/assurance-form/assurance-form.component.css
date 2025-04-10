@@ -1,0 +1,134 @@
+
+/* Style général */
+.main {
+    padding: 20px;
+    min-height: 100vh;
+    background: #f9fafb;
+  }
+  
+  /* Titre */
+  .title {
+    color: #3b82f6;
+    font-weight: 700;
+    font-size: 1.75rem;
+    text-align: center;
+    text-shadow: 2px 2px 10px rgba(59, 130, 246, 0.2);
+    margin-bottom: 30px;
+  }
+  
+  /* Conteneur principal */
+  .assurance-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Carte du formulaire */
+  .assurance-card {
+    background: linear-gradient(145deg, #ffffff, #e0e7ff);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    width: 100%;
+    max-width: 650px;
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  /* Sections du formulaire */
+  .form-section {
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    color: #1e40af;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dbeafe;
+    padding-bottom: 5px;
+  }
+  
+  /* Groupes de champs */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-label {
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* Inputs et icônes */
+  .input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-icon {
+    background: #f3f4f6;
+    padding: 12px;
+    border: 2px solid #cbd5e1;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    font-size: 1.1rem;
+  }
+  
+  .form-control, .form-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+    outline: none;
+  }
+  
+  /* Bouton */
+  .btn-submit {
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-submit:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+  }
+  
+  .btn-submit:hover:not(:disabled) {
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+  }
+  
+  /* Messages d'erreur */
+  .error-message {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #ef4444;
+  }
+  
+  /* Animation */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

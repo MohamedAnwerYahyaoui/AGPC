@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Your Feedbacks</h2>
+  <p><strong>Average Rating:</strong> {{ getAverageRating() | number: '1.1-2' }} / 5</p>
+
+  <div class="add-form">
+    <label>Rating:</label>
+    <div class="star-input">
+      <ng-container *ngFor="let star of [1,2,3,4,5]">
+        <span 
+          class="star" 
+          [class.filled]="star <= newNote" 
+          (click)="newNote = star"
+        >
+          &#9733;
+        </span>
+      </ng-container>
+    </div>
+    <button (click)="addFeedback()" class="btn add">Add</button>
+  </div>  
+
+  <div *ngFor="let feedback of feedbacks" class="card">
+    <div>
+      <p><strong>Rating:</strong>
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <span [ngClass]="{'filled': star <= feedback.note}">&#9733;</span>
+          <span *ngIf="star > feedback.note">&#9734;</span>
+        </ng-container>
+      </p>
+    </div>
+    <div class="actions">
+      <button (click)="selectFeedback(feedback)" class="btn edit">Edit</button>
+      <button (click)="deleteFeedback(feedback.id!)" class="btn delete">Delete</button>
+    </div>
+  </div>
+
+  <div *ngIf="selectedFeedback" class="modal">
+    <h3>Edit Feedback</h3>
+    <label>Rating:</label>
+    <select [(ngModel)]="updatedNote">
+      <option *ngFor="let r of [1,2,3,4,5]" [ngValue]="r">{{r}} Star</option>
+    </select>
+    <div class="modal-actions">
+      <button (click)="saveFeedback()" class="btn save">Save</button>
+      <button (click)="cancelEdit()" class="btn cancel">Cancel</button>
+    </div>
+  </div>
+</div>

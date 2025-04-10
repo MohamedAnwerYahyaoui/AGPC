@@ -1,0 +1,33 @@
+
+.dialog-form {
+    padding: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    margin-bottom: 1rem;
+  }
+  
+  mat-error {
+    font-size: 0.9rem;
+    color: #f44336;
+  }
+  
+  mat-dialog-actions {
+    padding: 1rem;
+  }
+  
+  mat-raised-button {
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    border-radius: 25px;
+  }
+  
+  mat-button {
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    border-radius: 25px;
+  }

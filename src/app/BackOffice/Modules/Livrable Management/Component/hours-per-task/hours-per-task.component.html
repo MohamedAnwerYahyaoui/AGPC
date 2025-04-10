@@ -1,0 +1,38 @@
+<main id="main" class="main">
+
+    <div class="chart-container">
+      <div *ngIf="isLoading" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Chargement des données...</p>
+      </div>
+    
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+        <button (click)="refreshData()">Réessayer</button>
+      </div>
+    
+      <div *ngIf="!isLoading && !errorMessage">
+        <div class="chart-controls">
+          <div class="chart-type-selector">
+            <label>Type de graphique:</label>
+            <select [(ngModel)]="selectedChartType" (change)="changeChartType(selectedChartType)">
+              <option *ngFor="let type of chartTypes" [value]="type">
+                {{ type | titlecase }}
+              </option>
+            </select>
+          </div>
+          <button (click)="refreshData()" class="refresh-button">
+            <i class="bx bx-refresh"></i> Actualiser
+          </button>
+        </div>
+    
+        <div class="chart-wrapper" *ngIf="!isLoading && !errorMessage">
+          <canvas baseChart
+                  [data]="chartData"
+                  [options]="chartOptions"
+                  [type]="chartType">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    </main>

@@ -1,0 +1,34 @@
+<main id="main" class="main">
+<div class="container">
+    <h2>All Reclamations (Admin View)</h2>
+  
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Search by name, lastname or comment..."
+        [(ngModel)]="searchTerm"
+        class="search-input"
+      />
+    </div>  
+    
+    <div *ngFor="let reclamation of filteredReclamations()" class="card">
+      <div>
+        <p><strong>Employee:</strong> {{reclamation.employee.name}} {{reclamation.employee.lastname}}</p>
+        <p><strong>Comment:</strong> {{reclamation.comment}}</p>
+      </div>
+      <div class="actions">
+        <button (click)="selectReclamation(reclamation)" class="btn edit">Edit</button>
+        <button (click)="deleteReclamation(reclamation.id!)" class="btn delete">Delete</button>
+      </div>
+    </div>  
+  
+    <div *ngIf="selectedReclamation" class="modal">
+      <h3>Edit Reclamation</h3>
+      <textarea [(ngModel)]="updatedComment"></textarea>
+      <div class="modal-actions">
+        <button (click)="saveReclamation()" class="btn save">Save</button>
+        <button (click)="cancelEdit()" class="btn cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,135 @@
+<main id="main" class="main">
+  <div class="form-container">
+    <h2>{{ isEditMode ? 'Modifier le congé' : 'Ajouter un congé' }}</h2>
+    
+    <form [formGroup]="congeeForm" (ngSubmit)="onSubmit()">
+      <!-- Champ Nom -->
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          id="nom"
+          type="text"
+          formControlName="nom"
+          class="form-control"
+        />
+        <!-- Erreur si le champ 'nom' est vide -->
+        <div
+          class="text-danger"
+          *ngIf="
+            congeeForm.get('nom')?.invalid &&
+            (congeeForm.get('nom')?.touched || congeeForm.get('nom')?.dirty)
+          "
+        >
+          Le nom est requis.
+        </div>
+      </div>
+
+      <!-- Champ Date Début -->
+      <div class="form-group">
+        <label for="dateDebut">Date Début</label>
+        <input
+          id="dateDebut"
+          type="date"
+          formControlName="dateDebut"
+          class="form-control"
+        />
+        <!-- Erreur si 'dateDebut' est vide -->
+        <div
+          class="text-danger"
+          *ngIf="
+            congeeForm.get('dateDebut')?.invalid &&
+            (congeeForm.get('dateDebut')?.touched || congeeForm.get('dateDebut')?.dirty)
+          "
+        >
+          La date de début est requise.
+        </div>
+      </div>
+
+      <!-- Champ Date Fin -->
+      <div class="form-group">
+        <label for="dateFin">Date Fin</label>
+        <input
+          id="dateFin"
+          type="date"
+          formControlName="dateFin"
+          class="form-control"
+        />
+        <!-- Erreur si 'dateFin' est vide -->
+        <div
+          class="text-danger"
+          *ngIf="
+            congeeForm.get('dateFin')?.invalid &&
+            (congeeForm.get('dateFin')?.touched || congeeForm.get('dateFin')?.dirty)
+          "
+        >
+          La date de fin est requise.
+        </div>
+      </div>
+
+      <!-- Erreur de validateur personnalisé (dateRangeValidator) -->
+      <div
+  class="text-danger"
+  *ngIf="
+    congeeForm.errors?.['dateRangeInvalid'] &&
+    (congeeForm.get('dateDebut')?.touched || congeeForm.get('dateFin')?.touched)
+  "
+>
+  La date de début doit être antérieure ou égale à la date de fin.
+</div>
+
+      <!-- Champ État -->
+      <div class="form-group">
+        <label for="etat">État</label>
+        <select id="etat" formControlName="etat" class="form-control">
+          <option value="" disabled>-- Sélectionnez un état --</option>
+          <option value="ACCEPTEE">ACCEPTEE</option>
+          <option value="REFUSEE">REFUSEE</option>
+          <option value="EN_ATTENTE">EN_ATTENTE</option>
+        </select>
+        <!-- Erreur si 'etat' n'est pas sélectionné -->
+        <div
+          class="text-danger"
+          *ngIf="
+            congeeForm.get('etat')?.invalid &&
+            (congeeForm.get('etat')?.touched || congeeForm.get('etat')?.dirty)
+          "
+        >
+          Veuillez sélectionner un état.
+        </div>
+      </div>
+
+      <!-- Champ Employé (ID) -->
+      <div class="form-group">
+        <label for="employee_id">Employé</label>
+        <select id="employee_id" formControlName="employee_id" class="form-control">
+          <option value="" disabled>-- Sélectionnez un employé --</option>
+          <option *ngFor="let emp of employees" [value]="emp.id">
+            {{ emp.nom }} {{ emp.prenom }}
+          </option>
+        </select>
+        <!-- Erreur si aucun employé n'est sélectionné -->
+        <div
+          class="text-danger"
+          *ngIf="
+            congeeForm.get('employee_id')?.invalid &&
+            (congeeForm.get('employee_id')?.touched ||
+              congeeForm.get('employee_id')?.dirty)
+          "
+        >
+          Veuillez sélectionner un employé.
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Bouton de soumission -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="congeeForm.invalid"
+      >
+        {{ isEditMode ? 'Modifier' : 'Enregistrer' }}
+      </button>
+    </form>
+  </div>
+</main>

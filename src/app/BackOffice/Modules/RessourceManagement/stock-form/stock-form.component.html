@@ -1,0 +1,77 @@
+<main id="main" class="main">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-header bg-gradient-primary text-white">
+              <h3 class="card-title text-center">Gestion du Stock</h3>
+            </div>
+            <div class="card-body">
+              <form #stockForm="ngForm" (ngSubmit)="onSubmit(stockForm)">
+               
+                <div class="mb-3">
+                  <label for="materiel" class="form-label">Matériel</label>
+                  <select
+                    id="materiel"
+                    name="materiel"
+                    [(ngModel)]="stock.materiel"
+                    class="form-control"
+                    required
+                  >
+                    <option *ngFor="let material of materials" [ngValue]="material">
+                      {{ material.name }}
+                    </option>
+                  </select>
+                
+                  <div *ngIf="(submitted || stockForm.controls['materiel']?.touched) && stockForm.controls['materiel']?.invalid" class="text-danger">
+                    <div *ngIf="stockForm.controls['materiel']?.errors?.['required']">Le matériel est obligatoire.</div>
+                  </div>
+                </div>
+  
+             
+                <div class="mb-3">
+                  <label for="currentQuantity" class="form-label">Quantité actuelle</label>
+                  <input
+                    id="currentQuantity"
+                    name="currentQuantity"
+                    type="number"
+                    [(ngModel)]="stock.currentQuantity"
+                    class="form-control"
+                    required
+                  />
+                  
+                  <div *ngIf="(submitted || stockForm.controls['currentQuantity']?.touched) && stockForm.controls['currentQuantity']?.invalid" class="text-danger">
+                    <div *ngIf="stockForm.controls['currentQuantity']?.errors?.['required']">La quantité actuelle est obligatoire.</div>
+                  </div>
+                </div>
+  
+              
+                <div class="mb-3">
+                  <label for="threshold" class="form-label">Seuil</label>
+                  <input
+                    id="threshold"
+                    name="threshold"
+                    type="number"
+                    [(ngModel)]="stock.threshold"
+                    class="form-control"
+                    required
+                  />
+                  
+                  <div *ngIf="(submitted || stockForm.controls['threshold']?.touched) && stockForm.controls['threshold']?.invalid" class="text-danger">
+                    <div *ngIf="stockForm.controls['threshold']?.errors?.['required']">Le seuil est obligatoire.</div>
+                  </div>
+                </div>
+  
+               
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-gradient-success">
+                    Ajouter
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

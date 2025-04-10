@@ -1,0 +1,215 @@
+
+/* Style général du formulaire */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Animation d'apparition du formulaire */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Style des labels */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+  }
+  
+  /* Style des champs de saisie */
+  input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #01070b;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #34495e;
+    background: #f5f7fa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: #010406;
+    box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
+    background: #ffffff;
+    outline: none;
+  }
+  
+  /* Style du bouton de soumission */
+  button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background: #0810f0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background: #515cf7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(29, 236, 233, 0.3);
+  }
+  
+  button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(11, 223, 235, 0.3);
+  }
+  
+  button[type="submit"]:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Style des messages d'erreur */
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  /* Animation de secousse pour les erreurs */
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+  }
+  
+  /* Style pour les champs invalides */
+  input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+    border-color: #e74c3c;
+    background: #fff5f5;
+  }
+  
+  input.ng-invalid.ng-touched:focus, select.ng-invalid.ng-touched:focus {
+    box-shadow: 0 0 12px rgba(231, 76, 60, 0.4);
+  }
+  
+  /* Style pour les champs valides */
+  input.ng-valid.ng-touched, select.ng-valid.ng-touched {
+    border-color: #2ecc71;
+    background: #f5fff7;
+  }
+  
+  input.ng-valid.ng-touched:focus, select.ng-valid.ng-touched:focus {
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);
+  }
+  
+  /* Style du titre */
+  h2 {
+    text-align: center;
+    color: #01090b;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    font-weight: 700;
+    animation: slideIn 1s ease-in-out;
+  }
+  
+  /* Animation du titre */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Style du conteneur des icônes 3D */
+  .icon-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+  }
+  
+  .icon-3d {
+    font-size: 3rem;
+    color: #3498db;
+    animation: float 3s ease-in-out infinite, rotate 6s linear infinite;
+    transform-style: preserve-3d;
+  }
+  
+  /* Animation de flottement */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotateY(0);
+    }
+    50% {
+      transform: translateY(-10px) rotateY(180deg);
+    }
+  }
+  
+  /* Animation de rotation */
+  @keyframes rotate {
+    0% {
+      transform: rotateY(0);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  /* Effet de survol sur les icônes */
+  .icon-3d:hover {
+    animation: float 1.5s ease-in-out infinite, rotate 3s linear infinite;
+    color: #e74c3c;
+  }
+  .icon-3d:hover, .material-image:hover {
+    animation: rotate 1s ease-in-out, colorChange 1s ease-in-out;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes colorChange {
+    0% {
+      color: #3498db;
+    }
+    50% {
+      color: #e74c3c;
+    }
+    100% {
+      color: #2ecc71;
+    }
+  }

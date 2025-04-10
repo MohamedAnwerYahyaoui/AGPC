@@ -1,0 +1,134 @@
+<!-- src/app/BackOffice/Modules/DocumentManagement/document-list/document-list.component.html -->
+<main id="main" class="main">
+    <!-- En-tête stylisé -->
+    <div class="section-header text-center mb-5">
+      <h2 class="title-gradient animate__animated animate__fadeIn">
+        <i class="fas fa-file-alt me-2"></i> Liste des Documents
+      </h2>
+    </div>
+  
+    <!-- Panneau de statistiques -->
+    <div class="row g-4 mb-5 justify-content-center">
+      <div class="col-md-5">
+        <div class="card stats-card animate__animated animate__fadeIn">
+          <div class="card-body text-center glassmorphism">
+            <i class="fas fa-folder-open fa-2x text-primary mb-2 icon-glow"></i>
+            <h5 class="card-title text-primary">Total Documents</h5>
+            <p class="card-text display-5 text-dark">{{ totalDocuments }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="card stats-card animate__animated animate__fadeIn" style="animation-delay: 0.2s;">
+          <div class="card-body text-center glassmorphism">
+            <i class="fas fa-archive fa-2x text-success mb-2 icon-glow"></i>
+            <h5 class="card-title text-success">Documents Archivés</h5>
+            <p class="card-text display-5 text-dark">{{ archivedCount }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Barre de recherche et filtres -->
+    <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
+      <div class="w-50">
+        <div class="input-group shadow-sm modern-input">
+          <input type="text" class="form-control rounded-start border-0" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="rechercherDocuments($event)" />
+          <button class="btn btn-primary rounded-end btn-glow"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary btn-animated shadow-sm btn-glow" (click)="toggleShowArchived()">
+          <i class="fas fa-archive me-2"></i>
+          {{ showArchived ? 'Masquer Documents Archivés' : 'Afficher Documents Archivés' }}
+        </button>
+      </div>
+    </div>
+  
+    <!-- Message si aucun document -->
+    <div *ngIf="filteredDocuments.length === 0" class="text-center mt-5 animate__animated animate__fadeIn">
+      <p class="text-muted h4"><i class="fas fa-exclamation-triangle me-2 text-warning"></i> Aucun document trouvé.</p>
+    </div>
+  
+    <!-- Tableau avec prévisualisation au survol -->
+    <div class="table-responsive custom-table-container animate__animated animate__fadeInUp">
+      <table class="table table-hover table-striped modern-table">
+        <thead class="table-header">
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Type</th>
+            <th scope="col">Date de Création</th>
+            <th scope="col">Chemin Fichier</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let document of filteredDocuments" 
+              class="table-row"
+              (mouseenter)="showPreview(document, $event)"
+              (mouseleave)="hidePreview()">
+            <td>{{ document.nom }}</td>
+            <td>{{ document.typeD }}</td>
+            <td>{{ document.dateCreation | date:'medium' }}</td>
+            <td>
+              <a href="#" (click)="telechargerFichier(document.cheminFichier, document.nom + '.pdf')" class="text-info text-decoration-none">
+                {{ document.cheminFichier }}
+                <i class="fas fa-download ms-2"></i>
+              </a>
+            </td>
+            <td>
+              <button class="btn btn-warning btn-sm me-2 btn-animated btn-glow" (click)="modifierDocument(document.id)">
+                <i class="fas fa-edit"></i> Modifier
+              </button>
+              <button class="btn btn-danger btn-sm me-2 btn-animated btn-glow" (click)="supprimerDocument(document.id)">
+                <i class="fas fa-trash"></i> Supprimer
+              </button>
+              <button class="btn btn-info btn-sm me-2 btn-animated btn-glow" (click)="archiverDocument(document.id)" *ngIf="!document.archived">
+                <i class="fas fa-box-archive"></i> Archiver
+              </button>
+              <button class="btn btn-success btn-sm me-2 btn-animated btn-glow" (click)="desarchiverDocument(document.id)" *ngIf="showArchived">
+                <i class="fas fa-box-open"></i> Désarchiver
+              </button>
+              <button class="btn btn-secondary btn-sm me-2 btn-animated btn-glow" (click)="afficherQRCode(document)">
+                <i class="fas fa-qrcode"></i> QR Code
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Aperçu au survol (version simplifiée) -->
+    <div *ngIf="hoveredDocument" 
+         class="preview-container"
+         [style.left.px]="previewPosition.x"
+         [style.top.px]="previewPosition.y">
+      <div class="preview-content">
+        <h6>{{ hoveredDocument.nom }}</h6>
+        <p>Type: {{ hoveredDocument.typeD }}</p>
+        <p>Date: {{ hoveredDocument.dateCreation | date:'medium' }}</p>
+        <p>Chemin: {{ hoveredDocument.cheminFichier }}</p>
+      </div>
+    </div>
+  
+    <!-- Affichage du QR code -->
+    <div *ngIf="qrCodeVisible" class="qr-code-overlay animate__animated animate__zoomIn">
+      <div class="qr-code-container glassmorphism">
+        <img [src]="qrCodeUrl" alt="QR Code" />
+        <button class="btn btn-danger mt-3 btn-glow" (click)="qrCodeVisible = false">
+          <i class="fas fa-times"></i> Fermer
+        </button>
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <div *ngIf="totalPages > 1" class="pagination-container text-center mt-5 animate__animated animate__fadeIn">
+      <button class="btn btn-primary btn-sm btn-glow" [disabled]="page === 0" (click)="onPageChange(page - 1)">
+        <i class="fas fa-chevron-left"></i> Précédent
+      </button>
+      <span class="mx-3 fs-5 text-dark">Page {{ page + 1 }} sur {{ totalPages }}</span>
+      <button class="btn btn-primary btn-sm btn-glow" [disabled]="page === totalPages - 1" (click)="onPageChange(page + 1)">
+        <i class="fas fa-chevron-right"></i> Suivant
+      </button>
+    </div>
+  </main>

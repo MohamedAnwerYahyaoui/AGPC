@@ -1,0 +1,62 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Update Budget</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/dashboard/finance/budget">Budgets</a></li>
+          <li class="breadcrumb-item active">Update Budget</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update Budget</h5>
+  
+              <!-- Budget Form -->
+              <form [formGroup]="BudgetForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input id="nom" formControlName="nom" class="form-control" type="text" required>
+                  <div *ngIf="BudgetForm.get('nom')?.invalid && BudgetForm.get('nom')?.touched" class="text-danger">
+                    <div *ngIf="BudgetForm.get('nom')?.errors?.['required']">Nom is required.</div>
+                    <div *ngIf="BudgetForm.get('nom')?.errors?.['minlength']">Nom must be at least 3 characters long.</div>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="montant">Montant</label>
+                  <input id="montant" formControlName="montant" class="form-control" type="number" required>
+                  <div *ngIf="BudgetForm.get('montant')?.invalid && BudgetForm.get('montant')?.touched" class="text-danger">
+                    <div *ngIf="BudgetForm.get('montant')?.errors?.['required']">Montant is required.</div>
+                    <div *ngIf="BudgetForm.get('montant')?.errors?.['min']">Montant must be greater than 10000.</div>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input id="description" formControlName="description" class="form-control" type="text" required>
+                </div>
+  
+  
+                <div class="form-group">
+                  <label for="tache">Tâche</label>
+                  <select id="tache" formControlName="tache" class="form-control" required>
+                    <option *ngFor="let t of taches" [ngValue]="t">{{ t.nom }}</option>
+                  </select>
+                </div>
+  
+                <button type="submit" class="btn btn-primary mt-3" [disabled]="BudgetForm.invalid">Update Budget</button>
+              </form>
+              <!-- End Budget Form -->
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

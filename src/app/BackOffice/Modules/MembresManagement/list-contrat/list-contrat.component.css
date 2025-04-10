@@ -1,0 +1,152 @@
+/* Style général */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7faff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h2 {
+  text-align: center;
+  color: #2196F3;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Conteneur des cartes */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Largeur fixe pour une taille moyenne */
+  gap: 1.5rem; /* Espacement entre les cartes */
+  padding: 0.75rem;
+}
+
+/* Carte individuelle */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  border-top: 3px solid #2196F3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* En-tête de la carte */
+.card-header {
+  background-color: #2196F3;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: 1rem;
+  color: #555;
+}
+
+.card-body p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.card-body strong {
+  color: #333;
+}
+
+/* Actions de la carte */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+/* Boutons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #2196F3;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #1976D2;
+}
+
+.btn-danger {
+  background-color: #e53935;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c62828;
+}
+.card-actions > .btn {
+  margin-right: 0.5rem; /* Espace à droite de chaque bouton */
+}
+
+/* Optionnel : retirer la marge du dernier bouton si nécessaire */
+.card-actions > .btn:last-child {
+  margin-right: 0;
+}
+
+
+.btn-success {
+  background-color: #4caf50;
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-success:hover {
+  background-color: #388e3c;
+}
+.container h2 {
+  text-align: center; /* Centrage du titre */
+  font-size: 1.6rem; /* Taille de police légèrement augmentée */
+  color: #2196F3; /* Couleur bleue pour correspondre au thème */
+  margin-bottom: 1.5rem; /* Espacement en dessous du titre */
+  font-weight: 600; /* Texte en gras */
+  text-transform: uppercase; /* Texte en majuscules */
+  letter-spacing: 1px; /* Espacement entre les lettres */
+}
+/* contract-list.component.css */
+.notification {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.mat-snack-bar-container.custom-snackbar {
+  top: 50% !important;
+  transform: translateY(-50%);
+  z-index: 9999 !important;
+}

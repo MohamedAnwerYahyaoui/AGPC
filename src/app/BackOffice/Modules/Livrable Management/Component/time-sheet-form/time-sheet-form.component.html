@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{isEdit ? 'Modifier' : 'Ajouter'}} Timesheet</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" formControlName="date">
+      <mat-error *ngIf="form.get('date')?.hasError('required')">Date requise</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Heures</mat-label>
+      <input matInput type="number" formControlName="heures">
+      <mat-error *ngIf="form.get('heures')?.hasError('required')">Heures requises</mat-error>
+      <mat-error *ngIf="form.get('heures')?.hasError('min')">Doit être positif</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description">
+      <mat-error *ngIf="form.get('description')?.hasError('required')">Description requise</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Tâche</mat-label>
+      <mat-select formControlName="tacheId">
+        <mat-option *ngFor="let task of tasks" [value]="task.id">
+          {{task.nom}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('tacheId')?.hasError('required')">Tâche requise</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Utilisateur</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{user.username}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('userId')?.hasError('required')">Utilisateur requis</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">Enregistrer</button>
+</mat-dialog-actions>

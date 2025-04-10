@@ -1,0 +1,41 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Update Chantier</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/dashboard/environnement/list">Chantiers</a></li>
+          <li class="breadcrumb-item active">Update Chantier</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update Chantier</h5>
+  
+              <!-- Chantier Form -->
+              <form [formGroup]="chantierForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input id="nom" formControlName="nom" class="form-control" type="text" required>
+                </div>
+  
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input id="location" formControlName="location" class="form-control" type="text" required>
+                </div>
+  
+                <button type="submit" class="btn btn-primary mt-3" [disabled]="chantierForm.invalid">Update Chantier</button>
+              </form>
+              <!-- End Chantier Form -->
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

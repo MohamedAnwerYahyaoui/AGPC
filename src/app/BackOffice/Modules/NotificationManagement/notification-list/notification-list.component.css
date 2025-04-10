@@ -1,0 +1,26 @@
+
+.notification-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notification-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notification-item p {
+    margin: 0;
+  }
+  
+  .notification-item button {
+    margin-left: 10px;
+  }
+  
+  .notification-item.unread {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  

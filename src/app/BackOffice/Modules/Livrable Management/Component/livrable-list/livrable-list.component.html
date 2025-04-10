@@ -1,0 +1,83 @@
+<main id="main" class="main">
+    <div class="container">
+      <!-- Header amélioré -->
+      <div class="header-section">
+        <div class="title-wrapper">
+          <mat-icon class="title-icon">assignment</mat-icon>
+          <h1 class="page-title">Gestion des Livrables</h1>
+        </div>
+        <button mat-raised-button color="primary" class="add-button" (click)="openForm()">
+          <mat-icon>add</mat-icon>
+          <span class="button-text">Nouveau Livrable</span>
+        </button>
+        <button mat-raised-button color="accent" class="export-button" (click)="exportToPDF()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          <span class="button-text">Export PDF</span>
+        </button>
+      </div>
+  
+      <!-- Tableau avec style amélioré -->
+      <div class="table-container">
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+          <!-- Colonne Nom -->
+          <ng-container matColumnDef="nom">
+            <mat-header-cell *matHeaderCellDef class="header-cell"> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="data-cell">
+              <div class="cell-content">
+                <mat-icon class="cell-icon">description</mat-icon>
+                {{element.nom}}
+              </div>
+            </mat-cell>
+          </ng-container>
+  
+          <!-- Colonne Description -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef class="header-cell"> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="data-cell description-cell">
+              {{element.description || 'Aucune description'}}
+            </mat-cell>
+          </ng-container>
+  
+          <!-- Colonne Date -->
+          <ng-container matColumnDef="dateLivraison">
+            <mat-header-cell *matHeaderCellDef class="header-cell"> Date Livraison </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="data-cell date-cell">
+              <mat-icon class="date-icon">event</mat-icon>
+              {{element.dateLivraison | date:'dd/MM/yyyy'}}
+            </mat-cell>
+          </ng-container>
+  
+          <!-- Colonne Actions -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="header-cell actions-header"> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="data-cell actions-cell">
+              <div class="actions-wrapper">
+                <button mat-mini-fab color="primary" (click)="openForm(element)" matTooltip="Modifier">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="deleteLivrable(element.id)" matTooltip="Supprimer">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;" class="data-row"></mat-row>
+        </mat-table>
+  
+        <!-- Pagination stylisée
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       class="custom-paginator">
+        </mat-paginator>
+  -->
+  
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       [showFirstLastButtons]="true"
+                       class="custom-paginator">
+        </mat-paginator>
+  
+      </div>
+    </div>
+  </main>

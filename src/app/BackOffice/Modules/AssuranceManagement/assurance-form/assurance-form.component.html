@@ -1,0 +1,60 @@
+<main id="main" class="main">
+    <!-- Titre de la page -->
+    <h3 class="text-center mb-4">💎{{ assuranceId ? 'Modifier' : 'Ajouter' }} une Assurance💎</h3>
+  
+    <div class="assurance-container">
+      <div class="assurance-card">
+        <form [formGroup]="assuranceForm" (ngSubmit)="soumettreFormulaire()">
+          <!-- Nom de l'assurance -->
+          <div class="mb-4 input-group">
+            <span class="input-group-text">🏢</span>
+            <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Nom de l'assurance" required />
+          </div>
+          <div *ngIf="formControls['nom'].invalid && formControls['nom'].touched" class="text-danger">
+            <small *ngIf="formControls['nom'].errors?.['required']">Le nom est requis.</small>
+            <small *ngIf="formControls['nom'].errors?.['minlength']">Le nom doit contenir au moins 3 caractères.</small>
+            <small *ngIf="formControls['nom'].errors?.['maxlength']">Le nom ne doit pas dépasser 100 caractères.</small>
+          </div>
+  
+          <!-- Date d'expiration -->
+          <div class="mb-4 input-group">
+            <span class="input-group-text">📅</span>
+            <input type="date" class="form-control" id="dateExpiration" formControlName="dateExpiration" required />
+          </div>
+          <div *ngIf="formControls['dateExpiration'].invalid && formControls['dateExpiration'].touched" class="text-danger">
+            <small *ngIf="formControls['dateExpiration'].errors?.['required']">La date d'expiration est requise.</small>
+            <small *ngIf="formControls['dateExpiration'].errors?.['invalidDate']">La date doit être dans le futur.</small>
+          </div>
+  
+          <!-- Montant de couverture -->
+          <div class="mb-4 input-group">
+            <span class="input-group-text">💰</span>
+            <input type="number" class="form-control" id="montantCouverture" formControlName="montantCouverture" placeholder="Montant de couverture" required />
+          </div>
+          <div *ngIf="formControls['montantCouverture'].invalid && formControls['montantCouverture'].touched" class="text-danger">
+            <small *ngIf="formControls['montantCouverture'].errors?.['required']">Le montant de couverture est requis.</small>
+            <small *ngIf="formControls['montantCouverture'].errors?.['min']">Le montant doit être supérieur ou égal à zéro.</small>
+            <small *ngIf="formControls['montantCouverture'].errors?.['pattern']">Le montant doit être un nombre valide (avec ou sans décimales).</small>
+          </div>
+  
+          <!-- Type d'assurance -->
+          <div class="mb-4">
+            <label for="typeAssurance" class="form-label">Type d'assurance</label>
+            <select class="form-select" id="typeAssurance" formControlName="typeAssurance" required>
+              <option *ngFor="let type of typeAssurance | keyvalue" [value]="type.value">{{ type.value }}</option>
+            </select>
+          </div>
+          <div *ngIf="formControls['typeAssurance'].invalid && formControls['typeAssurance'].touched" class="text-danger">
+            <small *ngIf="formControls['typeAssurance'].errors?.['required']">Le type d'assurance est requis.</small>
+          </div>
+  
+          <!-- Bouton de soumission -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100" [disabled]="!assuranceForm.valid">
+              💾 Enregistrer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>

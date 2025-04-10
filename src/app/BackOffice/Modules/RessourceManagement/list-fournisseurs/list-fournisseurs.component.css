@@ -1,0 +1,268 @@
+
+/* Styles globaux */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Titre de la page */
+  h3.text-center {
+    font-size: 2rem;
+    color: #010408;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  
+  /* Barre de recherche */
+  .mb-4 input.form-control {
+    border-radius: 25px;
+    border: 2px solid #e4e6e7;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .mb-4 input.form-control:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Tableau des fournisseurs */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table thead {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Boutons d'actions */
+  .btn {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-warning {
+    background-color: #060ffe;
+    border: none;
+    color: white;
+  }
+  
+  .btn-warning:hover {
+    background-color: #8798f8;
+    transform: scale(1.05);
+  }
+  
+  .btn-danger {
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #ff4c4c;
+    transform: scale(1.05);
+  }
+  
+  .btn-primary {
+    background-color: #2310f6;
+    border: none;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #4f43f6;
+    transform: scale(1.05);
+  }
+  
+  .btn-secondary {
+    background-color: #010406;
+    border: none;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    border-radius: 25px;
+    padding: 8px 15px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination button.active {
+    background-color: #082de5;
+    color: white;
+    border-color: #0829e5;
+  }
+  
+  .pagination button:hover:not(.active) {
+    background-color: #a2cffa;
+  }
+  
+  /* Formulaire de modification */
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+  }
+  
+  form h4 {
+    color: #01070e;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-control {
+    border-radius: 25px;
+    border: 2px solid #007BFF;
+    padding: 10px 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Effets supplémentaires */
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Animation sur les boutons */
+  button:hover {
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .table th, .table td {
+      padding: 10px;
+    }
+  
+    .btn {
+      padding: 6px 15px;
+      font-size: 0.75rem;
+    }
+  
+    .pagination button {
+      padding: 6px 12px;
+      font-size: 0.75rem;
+    }
+  
+    form {
+      padding: 15px;
+    }
+  }
+  .list-group {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8f9fa;
+  }
+  .custom-qr-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Assurez-vous que le conteneur est visible */
+  }
+  
+  .qr-background {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  
+  .qr-text {
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .qr-text h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #ff6b6b;
+  }
+  
+  .qr-text p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #3bb4c8;
+  }

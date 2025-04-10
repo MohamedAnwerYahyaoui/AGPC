@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Rate Each Category</h2>
+    <div *ngFor="let category of categories" class="category-card">
+        <p><strong>{{ category }}</strong>
+            <span *ngIf="averageRatings[category]">
+              — Avg: {{ averageRatings[category] | number: '1.1-2' }} ★
+            </span>
+          </p>          
+      <div class="star-input">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <span 
+            class="star"
+            [class.filled]="star <= categoryRatings[category]"
+            (click)="setRating(category, star)"
+          >
+            &#9733;
+          </span>
+        </ng-container>
+      </div>
+    </div>
+    <button (click)="submitAllFeedbacks()" class="btn add">Submit Feedback</button>
+  </div>
+  

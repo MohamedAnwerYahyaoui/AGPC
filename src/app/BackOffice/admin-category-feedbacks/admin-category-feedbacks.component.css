@@ -1,0 +1,25 @@
+
+.container {
+    padding: 20px;
+  }
+  
+  .feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .feedback-table th,
+  .feedback-table td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+  }
+  
+  .star {
+    color: #ccc;
+    font-size: 18px;
+  }
+  
+  .star.filled {
+    color: gold;
+  }
+  

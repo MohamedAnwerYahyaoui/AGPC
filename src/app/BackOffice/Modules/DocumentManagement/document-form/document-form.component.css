@@ -1,0 +1,361 @@
+
+/* Importer une police moderne */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Style général */
+.main {
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Titre */
+.title {
+  color: #1e3a8a; /* Bleu profond */
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title-icon {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: rotate(10deg);
+}
+
+/* Conteneur principal */
+.document-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Carte du formulaire */
+.document-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  width: 100%;
+  max-width: 700px;
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Sections du formulaire */
+.form-section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  color: #1e3a8a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+/* Groupes de champs */
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 1rem;
+}
+
+/* Inputs et icônes */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.input-icon {
+  background: #f1f5f9;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid #e2e8f0;
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  transition: background 0.3s ease;
+}
+
+.input-icon:hover {
+  background: #e2e8f0;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 0 12px 12px 0;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* Style spécifique pour le téléchargement de fichier */
+.file-upload-group {
+  position: relative;
+}
+
+.file-input {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-input::before {
+  content: 'Choisir un fichier';
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.file-input:hover::before {
+  background: #1e3a8a;
+}
+
+/* Fichier actuel */
+.current-file {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.current-file strong {
+  color: #1f2937;
+}
+
+/* Boutons */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.btn-submit {
+  background: #10b981; /* Vert pour une action positive */
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:disabled {
+  background: #6ee7b7;
+  cursor: not-allowed;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #059669;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-cancel {
+  background: #f1f5f9;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #e2e8f0;
+  color: #1f2937;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages d'erreur et toast */
+.error-message {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.toast-message {
+  border-radius: 12px;
+  background: #e0f2fe;
+  border: 1px solid #38bdf8;
+  padding: 12px 16px;
+  margin-top: 24px;
+  text-align: center;
+  color: #1e3a8a;
+  font-weight: 500;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .document-card {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-icon {
+    border-radius: 12px 12px 0 0;
+    border-right: 2px solid #e2e8f0;
+    border-bottom: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 0 0 12px 12px;
+  }
+}
+/* Centrage et styling du formulaire */
+.main {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.form-control {
+  border-radius: 8px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button.btn-primary {
+  border-radius: 25px;
+  font-size: 16px;
+}
+
+button.btn-outline-secondary {
+  border-radius: 25px;
+  font-size: 16px;
+}
+
+/* Validation errors */
+.text-danger {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.alert {
+  font-size: 1rem;
+  background-color: #e2f7d9;
+  border-color: #d4f1c8;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* File input styling */
+input[type="file"] {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+input[type="file"]:hover {
+  background-color: #e9ecef;
+}
+
+.card h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #007bff;
+  text-transform: uppercase;
+}

@@ -1,0 +1,133 @@
+
+.gantt-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .gantt-chart {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+  }
+  
+  /* Header styles */
+  .gantt_grid_scale {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .gantt_grid_head_cell {
+    font-weight: 600;
+    color: #495057;
+    background-color: #f1f3f5;
+    border-right: 1px solid #dee2e6;
+    padding: 8px 12px;
+  }
+  
+  /* Task row styles */
+  .gantt_task_row {
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .gantt_task_row.gantt_selected {
+    background-color: #e7f5ff;
+  }
+  
+  /* Task bar styles */
+  .gantt_task_progress {
+    background-color: #4dabf7;
+  }
+  
+  .gantt_task_content {
+    color: #343a40;
+    font-size: 12px;
+    padding-left: 5px;
+  }
+  
+  /* Scale styles */
+  .gantt_scale_cell {
+    border-right: 1px solid #dee2e6;
+    color: #495057;
+  }
+  
+  .gantt_scale_month {
+    font-weight: 600;
+    background-color: #f8f9fa;
+  }
+  
+  /* Today marker */
+  .gantt_today {
+    background-color: #fff3bf;
+  }
+  
+  /* Controls */
+  .gantt-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    display: flex;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gantt-controls button {
+    min-width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ced4da;
+    background: #fff;
+    color: #495057;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .gantt-controls button:hover {
+    background: #f1f3f5;
+    border-color: #adb5bd;
+  }
+  
+  .gantt-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Weekend highlighting */
+  .gantt_weekend {
+    background-color: #f8f9fa;
+  }
+  
+  /* Link arrow styles */
+  .gantt_link_arrow {
+    border-color: #495057;
+  }
+  
+  
+  
+  /* Ajoutez ces styles aux existants */
+  .gantt-controls button i {
+    margin-right: 5px;
+  }
+  
+  /* Style spécifique pour le bouton PDF */
+  .gantt-controls button:last-child {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #c0392b;
+  }
+  
+  .gantt-controls button:last-child:hover {
+    background-color: #c0392b;
+  }

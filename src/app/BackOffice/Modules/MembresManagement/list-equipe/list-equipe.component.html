@@ -1,0 +1,78 @@
+<main id="main" class="main">
+  <h2>Liste des Équipes</h2>
+  <!-- Barre de recherche et filtre Livrable -->
+  <div class="filters" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="resetPage()"
+      placeholder="Recherche avancée"
+      style="padding: 0.5rem; width: 200px;"
+    />
+
+    <select
+      [(ngModel)]="selectedLivrable"
+      (ngModelChange)="resetPage()"
+      style="padding: 0.5rem; width: 200px;"
+    >
+      <option value="">-- Tous les livrables --</option>
+      <option *ngFor="let liv of livrables" [value]="liv.id">
+        {{ liv.nom }}
+      </option>
+    </select>
+  </div>
+  <hr />
+
+  <div class="cards-container">
+    <div
+      class="card"
+      *ngFor="let equipe of (equipes | equipeFilter : searchTerm : selectedLivrable | paginate : { itemsPerPage: 5, currentPage: page })"
+    >
+      <div class="card-header">
+        {{ equipe.nom }}
+      </div>
+      <div class="card-body">
+        <p><strong>Membres :</strong> {{ equipe.nombreMembres }}</p>
+        <p><strong>Contact :</strong> {{ equipe.contactEquipe }}</p>
+        <p><strong>Date de Création :</strong> {{ equipe.dateCreation | date }}</p>
+        <p><strong>Livrable ID :</strong> {{ equipe.livrable_id }}</p>
+        <p><strong>Livrable Nom :</strong> {{ equipe.livrable?.nom }}</p>
+      </div>
+      
+      <!-- Zone des étoiles -->
+      <div class="stars">
+        <ng-container *ngFor="let star of [1,2,3,4,5,6,7,8,9,10]">
+          <span 
+            class="star"
+            [ngClass]="{'selected': star <= equipe.rating}"
+            (click)="onStarClick(equipe, star)">
+            &#9733;
+          </span>
+        </ng-container>
+      </div>
+      
+      <!-- Pied de la carte en grille 2x2 pour les 4 boutons -->
+      <!-- Pied de la carte en grille 2x2 pour les 4 boutons -->
+<div class="card-footer">
+  <div class="buttons-grid">
+    <!-- Bouton Modifier (bleu) -->
+    <button class="btn btn-primary same-size" (click)="editEquipe(equipe)">Modifier</button>
+
+    <!-- Bouton Supprimer (vert) -->
+    <button class="btn btn-success same-size" (click)="deleteEquipe(equipe.id!)">Supprimer</button>
+
+    <!-- ✅ Bouton Export (ROUGE) -->
+    <button class="btn btn-danger same-size" (click)="exportExcel(equipe)">Export</button>
+
+    <!-- ✅ Bouton Import (JAUNE) -->
+    <button class="btn btn-warning same-size" (click)="triggerFileInput(equipe)">Import</button>
+    <input type="file" hidden [id]="'fileInput_' + equipe.id" (change)="onFileSelected($event, equipe)" />
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <button (click)="goToAddEquipe()">Ajouter une Équipe</button>
+</main>

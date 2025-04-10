@@ -1,0 +1,142 @@
+
+/* src/app/BackOffice/Modules/DocumentManagement/document-list/document-list.component.css */
+
+/* Styles pour l'en-tête */
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .title-gradient {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Styles pour les cartes de statistiques */
+  .stats-card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .icon-glow {
+    filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
+  }
+  
+  /* Styles pour la barre de recherche */
+  .modern-input {
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .modern-input input {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  .btn-glow {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .btn-glow:hover {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+  }
+  
+  /* Styles pour le tableau */
+  .custom-table-container {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  .modern-table {
+    background: #fff;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .table-header th {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: white;
+    padding: 15px;
+    text-align: left;
+  }
+  
+  .table-row td {
+    padding: 15px;
+    vertical-align: middle;
+  }
+  
+  .table-row:hover {
+    background: rgba(0, 123, 255, 0.05);
+  }
+  
+  .btn-animated {
+    transition: transform 0.2s ease;
+  }
+  
+  .btn-animated:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Styles pour la prévisualisation au survol */
+  .preview-container {
+    position: fixed;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 300px;
+  }
+  
+  .preview-content {
+    font-size: 14px;
+  }
+  
+  .preview-content h6 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+  }
+  
+  .preview-content p {
+    margin: 0;
+    color: #666;
+  }
+  
+  /* Styles pour le QR code */
+  .qr-code-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .qr-code-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  /* Styles pour la pagination */
+  .pagination-container button {
+    margin: 0 10px;
+  }

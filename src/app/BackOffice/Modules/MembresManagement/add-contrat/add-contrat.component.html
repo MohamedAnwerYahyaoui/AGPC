@@ -1,0 +1,47 @@
+<main id="main" class="main">
+  <div class="container">
+    <h2>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un Contrat</h2>
+  
+    <form [formGroup]="contratForm" (ngSubmit)="saveContrat()">
+      <!-- Champ Date Début -->
+      <div class="form-group">
+        <label>Date Début :</label>
+        <input type="date" formControlName="dateDebut" class="form-control">
+        <div *ngIf="contratForm.get('dateDebut')?.invalid && (contratForm.get('dateDebut')?.dirty || contratForm.get('dateDebut')?.touched)" class="text-danger">
+          La date de début est obligatoire.
+        </div>
+      </div>
+  
+      <!-- Champ Date Fin -->
+      <div class="form-group">
+        <label>Date Fin :</label>
+        <input type="date" formControlName="dateFin" class="form-control">
+        <div *ngIf="contratForm.get('dateFin')?.invalid && (contratForm.get('dateFin')?.dirty || contratForm.get('dateFin')?.touched)" class="text-danger">
+          La date de fin est obligatoire.
+        </div>
+        <!-- Vérification supplémentaire côté client : date de fin doit être postérieure à date début -->
+        <div *ngIf="contratForm.get('dateDebut')?.value && contratForm.get('dateFin')?.value && contratForm.get('dateFin')?.value < contratForm.get('dateDebut')?.value" class="text-danger">
+          La date de fin doit être postérieure à la date de début.
+        </div>
+      </div>
+  
+      <!-- Champ Type de Contrat -->
+      <div class="form-group">
+        <label>Type de Contrat :</label>
+        <select formControlName="contrat" class="form-control">
+          <option value="" disabled>-- Sélectionnez un type --</option>
+          <option *ngFor="let type of typeContrats" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="contratForm.get('contrat')?.invalid && (contratForm.get('contrat')?.dirty || contratForm.get('contrat')?.touched)" class="text-danger">
+          Le type de contrat est obligatoire.
+        </div>
+      </div>
+  
+      <!-- Boutons -->
+      <button type="submit" class="btn btn-success" [disabled]="contratForm.invalid || (contratForm.get('dateDebut')?.value && contratForm.get('dateFin')?.value && contratForm.get('dateFin')?.value < contratForm.get('dateDebut')?.value)">
+        Enregistrer
+      </button>
+      <button type="button" class="btn btn-secondary" routerLink="/dashboard/add-contrat">Annuler</button>
+    </form>
+  </div>
+</main>

@@ -1,0 +1,140 @@
+<main id="main" class="main">
+  <div class="container mt-4">
+    <h2>{{ isEditMode ? "Modifier l'Équipe" : "Ajouter une Équipe" }}</h2>
+
+    <form [formGroup]="equipeForm" (ngSubmit)="submitForm()">
+      <!-- Champ Nom -->
+      <div class="form-group mb-3">
+        <label for="nom">Nom :</label>
+        <input id="nom" type="text" formControlName="nom" class="form-control" />
+        <!-- Message d'erreur -->
+        <div
+          class="text-danger"
+          *ngIf="
+            equipeForm.get('nom')?.invalid &&
+            (equipeForm.get('nom')?.touched || equipeForm.get('nom')?.dirty)
+          "
+        >
+          <div *ngIf="equipeForm.get('nom')?.errors?.['required']">
+            Le nom est requis.
+          </div>
+          <div *ngIf="equipeForm.get('nom')?.errors?.['minlength']">
+            Le nom doit comporter au moins 3 caractères.
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ Nombre de Membres -->
+      <div class="form-group mb-3">
+        <label for="nombreMembres">Nombre de Membres :</label>
+        <input
+          id="nombreMembres"
+          type="number"
+          formControlName="nombreMembres"
+          class="form-control"
+        />
+        <!-- Message d'erreur -->
+        <div
+          class="text-danger"
+          *ngIf="
+            equipeForm.get('nombreMembres')?.invalid &&
+            (equipeForm.get('nombreMembres')?.touched ||
+              equipeForm.get('nombreMembres')?.dirty)
+          "
+        >
+          <div *ngIf="equipeForm.get('nombreMembres')?.errors?.['required']">
+            Le nombre de membres est requis.
+          </div>
+          <div *ngIf="equipeForm.get('nombreMembres')?.errors?.['min']">
+            Le nombre de membres doit être au moins 1.
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ Contact Équipe -->
+      <div class="form-group mb-3">
+        <label for="contactEquipe">Contact Équipe :</label>
+        <input
+          id="contactEquipe"
+          type="text"
+          formControlName="contactEquipe"
+          class="form-control"
+        />
+        <!-- Message d'erreur -->
+        <div
+          class="text-danger"
+          *ngIf="
+            equipeForm.get('contactEquipe')?.invalid &&
+            (equipeForm.get('contactEquipe')?.touched ||
+              equipeForm.get('contactEquipe')?.dirty)
+          "
+        >
+          <div *ngIf="equipeForm.get('contactEquipe')?.errors?.['required']">
+            Le contact de l'équipe est requis.
+          </div>
+          <div *ngIf="equipeForm.get('contactEquipe')?.errors?.['minlength']">
+            Le contact doit comporter au moins 3 caractères.
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ Date de Création -->
+      <div class="form-group mb-3">
+        <label for="dateCreation">Date de Création :</label>
+        <input
+          id="dateCreation"
+          type="date"
+          formControlName="dateCreation"
+          class="form-control"
+        />
+        <!-- Message d'erreur -->
+        <div
+          class="text-danger"
+          *ngIf="
+            equipeForm.get('dateCreation')?.invalid &&
+            (equipeForm.get('dateCreation')?.touched ||
+              equipeForm.get('dateCreation')?.dirty)
+          "
+        >
+          <div *ngIf="equipeForm.get('dateCreation')?.errors?.['required']">
+            La date de création est requise.
+          </div>
+        </div>
+      </div>
+
+      <!-- Champ Livrable -->
+      <div class="form-group mb-3">
+        <label for="livrable_id">Livrable :</label>
+        <select
+          id="livrable_id"
+          formControlName="livrable_id"
+          class="form-control"
+        >
+          <option value="" disabled>-- Sélectionner un Livrable --</option>
+          <option *ngFor="let livrable of livrables" [value]="livrable.id">
+            {{ livrable.nom }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Boutons -->
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="equipeForm.invalid"
+        >
+          {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          *ngIf="isEditMode"
+          (click)="resetForm()"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</main>

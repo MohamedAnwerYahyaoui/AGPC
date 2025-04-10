@@ -1,0 +1,106 @@
+<main id="main" class="main">
+  <div class="container">
+    <h2>Liste des contrats</h2>
+
+    <!-- Barre de recherche et filtres -->
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <!-- Recherche textuelle (exemple: sur le type) -->
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          (ngModelChange)="resetPage()"
+          placeholder="Rechercher par type"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <!-- Filtre par type de contrat -->
+        <select
+          [(ngModel)]="selectedType"
+          (ngModelChange)="resetPage()"
+          class="form-control"
+        >
+          <option value="">Tous les types</option>
+          <option *ngFor="let type of typeContrats" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <!-- Filtre par date de début (format jj/mm/aaaa) -->
+        <input
+          type="text"
+          [(ngModel)]="filterStartDate"
+          (ngModelChange)="resetPage()"
+          placeholder="jj/mm/aaaa"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <!-- Filtre par date de fin (format jj/mm/aaaa) -->
+        <input
+          type="text"
+          [(ngModel)]="filterEndDate"
+          (ngModelChange)="resetPage()"
+          placeholder="jj/mm/aaaa"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <!-- Liste des contrats filtrée et paginée -->
+    <div class="card-container">
+      <div
+        class="card"
+        *ngFor="let contrat of (contrats
+          | contractFilter : searchText : selectedType : filterStartDate : filterEndDate
+          | paginate : { itemsPerPage: 5, currentPage: page })"
+      >
+        <div class="card-header">
+          Contrat {{ contrat.id }}
+        </div>
+        <div class="card-body">
+          <p>
+            <strong>Date Début:</strong>
+            {{ contrat.dateDebut | date: 'dd/MM/yyyy' }}
+          </p>
+          <p>
+            <strong>Date Fin:</strong>
+            {{ contrat.dateFin | date: 'dd/MM/yyyy' }}
+          </p>
+          <p>
+            <strong>Type:</strong> {{ contrat.contrat }}
+          </p>
+        </div>
+        <div class="card-actions">
+          <button
+            class="btn btn-primary"
+            [routerLink]="['/dashboard/add-contrat', contrat.id]"
+          >
+            Modifier
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="deleteContrat(contrat.id!)"
+          >
+            Supprimer
+          </button>
+          <button class="btn btn-success" (click)="onDownloadPdf(contrat.id!)">
+            Télécharger  PDF
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrôles de pagination -->
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+    <button class="btn btn-success" [routerLink]="['/dashboard/add-contrat']">
+      Ajouter un contrat
+    </button>
+  </div>
+</main>

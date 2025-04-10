@@ -1,0 +1,133 @@
+
+/* Conteneur principal */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre */
+  h2 {
+    text-align: center;
+    color: #010303;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  /* Groupe de formulaire */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* Champs de formulaire */
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(8, 0, 255, 0.3);
+    outline: none;
+  }
+  
+  select.form-control {
+    cursor: pointer;
+  }
+  
+  /* Messages d'erreur */
+  .error-message {
+    color: #dc3545; /* Rouge pour les messages d'erreur */
+    font-size: 14px;
+    margin-top: 5px;
+    display: block; /* Afficher par défaut */
+  }
+  
+  /* Masquer les messages d'erreur par défaut */
+  .error-message {
+    display: none;
+  }
+  
+  /* Afficher les messages d'erreur lorsque le champ est invalide et touché */
+  .form-control.ng-invalid.ng-touched + .error-message,
+  .form-control.ng-invalid.ng-dirty + .error-message {
+    display: block;
+  }
+  
+  /* Boutons */
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #0a1bfd;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background-color: #0a0a0a;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 576px) {
+    .container {
+      max-width: 100%;
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .btn {
+      font-size: 14px;
+    }
+  }
+  /* Styles pour les icônes */
+  .fas {
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+    color: #dadadb; /* Couleur des icônes */
+    font-size: 1.2em; /* Taille des icônes */
+  }
+  
+  /* Titre avec icône */
+  h2 .fas {
+    font-size: 1.5em; /* Taille plus grande pour l'icône du titre */
+    color: #1307f6; /* Couleur spécifique pour l'icône du titre */
+  }
+  
+  /* Boutons avec icônes */
+  .btn .fas {
+    margin-right: 8px; /* Espacement entre l'icône et le texte dans les boutons */
+  }

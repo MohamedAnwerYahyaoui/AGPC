@@ -1,0 +1,420 @@
+
+/* Styles globaux */
+body {
+    background-color: #eef4fc; /* Fond bleu clair */
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Texte principal */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Conteneur principal */
+  .container {
+    max-width: 800px; /* Largeur maximale augmentée */
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in-out;
+    margin: 20px; /* Espace autour du conteneur */
+  }
+  
+  /* Animation d'apparition du conteneur */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Titre */
+  h2 {
+    color: #50d4ec; /* Bleu foncé */
+    font-size: 1.8rem; /* Taille de police augmentée */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: slideIn 0.8s ease-in-out;
+  }
+  
+  /* Animation du titre */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Bouton d'ajout */
+  button {
+    background-color: #1313f5; /* Bleu vif */
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Padding augmenté */
+    border-radius: 8px; /* Bordures plus arrondies */
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(127, 179, 235, 0.2);
+  }
+  
+  button:hover {
+    background-color: #3757f5; /* Bleu plus foncé au survol */
+    transform: translateY(-3px); /* Effet de levée */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+  }
+  
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(3, 113, 231, 0.2);
+  }
+  
+  /* Tableau */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px; /* Bordures plus arrondies */
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem; /* Taille de police légèrement augmentée */
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  thead {
+    background: linear-gradient(135deg, #fffcfc, #fdfcfc); /* Dégradé bleu */
+    color: rgb(10, 5, 5);
+    text-transform: uppercase;
+  }
+  
+  thead th {
+    padding: 15px; /* Padding augmenté */
+    font-weight: bold;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f8faff; /* Fond alterné bleu clair */
+  }
+  
+  tbody tr:hover {
+    background-color: #dfeeff; /* Fond au survol */
+    transition: background-color 0.3s ease;
+  }
+  
+  td {
+    padding: 12px; /* Padding augmenté */
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Inputs et Select */
+  input, select {
+    padding: 8px; /* Padding augmenté */
+    border-radius: 6px; /* Bordures plus arrondies */
+    border: 1px solid #ccc;
+    font-size: 0.95rem; /* Taille de police légèrement augmentée */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: #007BFF; /* Bordure bleue au focus */
+    box-shadow: 0 0 10px rgba(160, 200, 239, 0.4); /* Ombre bleue au focus */
+    outline: none;
+  }
+  
+  /* Boutons actions */
+  .btn-warning {
+    background-color: #dd00ff; /* Orange */
+    border: none;
+    color: white;
+    padding: 8px 16px; /* Padding augmenté */
+    border-radius: 6px; /* Bordures plus arrondies */
+    margin-right: 5px;
+    font-size: 0.95rem; /* Taille de police légèrement augmentée */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+  }
+  
+  .btn-warning:hover {
+    background-color: #cc8400; /* Orange plus foncé au survol */
+    transform: translateY(-3px); /* Effet de levée */
+    box-shadow: 0 6px 12px rgba(255, 165, 0, 0.3);
+  }
+  
+  .btn-warning:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2);
+  }
+  
+  .btn-danger {
+    background-color: #ff7373; /* Rouge */
+    border: none;
+    color: white;
+    padding: 8px 16px; /* Padding augmenté */
+    border-radius: 6px; /* Bordures plus arrondies */
+    font-size: 0.95rem; /* Taille de police légèrement augmentée */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+  }
+  
+  .btn-danger:hover {
+    background-color: #fb9b9b; /* Rouge plus foncé au survol */
+    transform: translateY(-3px); /* Effet de levée */
+    box-shadow: 0 6px 12px rgba(220, 53, 69, 0.3);
+  }
+  
+  .btn-danger:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+  }
+  
+  /* Effet de survol sur les lignes du tableau */
+  tbody tr {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    transform: scale(1.02); /* Légère mise à l'échelle */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+  }
+  
+  /* Pagination */
+  .pagination {
+    margin-top: 25px; /* Espace augmenté */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espace entre les boutons */
+  }
+  
+  .pagination button {
+    padding: 8px 16px; /* Padding augmenté */
+    border: 1px solid #3bb4c8; /* Bordure bleue */
+    background-color: #3bb4c8; /* Bleu clair */
+    color: white;
+    border-radius: 6px; /* Bordures plus arrondies */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .pagination button.active {
+    background-color: #0f31f7; /* Bleu vif */
+    border-color: #0a3df5;
+  }
+  
+  .pagination button:hover {
+    background-color: #1d54f9; /* Bleu plus foncé au survol */
+    transform: translateY(-2px); /* Effet de levée */
+  }
+  
+  /* Barre de recherche */
+  .search-bar {
+    margin-bottom: 25px; /* Espace augmenté */
+  }
+  
+  /* Barre de recherche */
+  .search-bar input {
+    width: 100%;
+    padding: 12px; /* Padding augmenté */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Bordures arrondies */
+    font-size: 1rem; /* Taille de police */
+    transition: all 0.3s ease;
+  }
+  
+  .search-bar input:focus {
+    border-color: #007BFF; /* Bordure bleue au focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4); /* Ombre bleue au focus */
+    transform: scale(1.02); /* Légère augmentation de taille */
+    outline: none;
+  }
+  /* Titre centré */
+  .centered-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #010506;
+    margin-bottom: 20px;
+  }
+  
+  /* Animation de pulsation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Bouton Ajouter avec animation */
+  .add-button {
+    background-color: #1d11fc; /* Rouge vif */
+    color: white;
+    border: none;
+    width: 40px; /* Largeur fixe */
+    height: 40px; /* Hauteur fixe */
+    border-radius: 50%; /* Forme ronde */
+    font-size: 1.5rem; /* Taille du symbole + */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(251, 68, 68, 0.2); /* Ombre rouge */
+    float: left ; /* Aligner à droite */
+    margin-bottom: 20px; /* Marge en bas */
+    animation: pulse 2s infinite; /* Animation de pulsation */
+  }
+  
+  /* Effet de survol */
+  .add-button:hover {
+    background-color: #2666fc; /* Rouge plus foncé */
+    transform: scale(1.1); /* Légère augmentation de taille */
+    box-shadow: 0 6px 12px rgba(182, 2, 2, 0.3); /* Ombre plus prononcée */
+    animation: none; /* Désactiver l'animation au survol */
+  }
+  
+  /* Effet lors du clic */
+  .add-button:active {
+    transform: scale(1); /* Retour à la taille normale */
+    box-shadow: 0 4px 8px rgba(2, 26, 182, 0.2); /* Ombre légère */
+  }
+  /* Effet de survol sur les lignes du tableau */
+  tbody tr {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    transform: scale(1.02); /* Légère augmentation de taille */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+  }
+  /* Indicateur visuel pour l'IA */
+  .recommendations p {
+    text-align: center;
+    font-style: italic;
+    color: #6c757d; /* Gris */
+  }
+  /* Section des recommandations */
+  .recommendations {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa; /* Fond gris clair */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recommendations h3 {
+    color: #50d4ec; /* Bleu foncé */
+    margin-bottom: 10px;
+  }
+  
+  .recommendations ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .recommendations li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recommendations li:hover {
+    background-color: #e9ecef; /* Gris clair au survol */
+  }
+  .chart-container {
+    max-width: 300px;
+    margin: 20px auto;
+  }
+  /* Ajoutez ces styles à list-materials.component.css */
+  
+  /* Styles pour la section des prix du marché */
+  .market-data-section {
+    margin-bottom: 20px;
+  }
+  
+  .market-data-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .market-data-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .refresh-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3498db;
+    padding: 5px;
+  }
+  
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  
+  .price-item {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .loading-message {
+    text-align: center;
+    padding: 10px;
+    color: #666;
+  }
+  
+  .error-message {
+    text-align: center;
+    padding: 10px;
+    color: #e74c3c;
+    background: #fdecea;
+    border-radius: 4px;
+  }
+  .text-success {
+    color: green;
+  }
+  
+  .text-danger {
+    color: red;
+  }
+  
+  .text-muted {
+    color: gray;
+  }
+  
+  /* ... vos styles existants ... */

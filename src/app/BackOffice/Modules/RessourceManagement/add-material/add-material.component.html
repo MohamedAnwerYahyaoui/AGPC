@@ -1,0 +1,101 @@
+<main id="main" class="main">
+    <h2>Ajouter un Matériau</h2>
+  
+    
+  
+    <form (ngSubmit)="addMaterial()" #materialForm="ngForm" class="material-form">
+      <div class="form-group">
+        <label for="name">Nom :</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="material.name"
+          name="name"
+          required
+          minlength="1"
+          maxlength="100"
+          #name="ngModel"
+          class="form-control"
+          (input)="suggestCategory()"
+        />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+          <div *ngIf="name.errors?.['required']">Le nom est obligatoire.</div>
+          <div *ngIf="name.errors?.['minlength']">Le nom doit contenir au moins 1 caractère.</div>
+          <div *ngIf="name.errors?.['maxlength']">Le nom ne peut pas dépasser 100 caractères.</div>
+        </div>
+      </div>
+  
+    
+  <div *ngIf="isThinking" class="thinking-animation">
+    <p>Techroots réfléchit...</p>
+  </div>
+  <div *ngIf="suggestedCategory" class="suggestion">
+    <p>Catégorie suggérée : <strong>{{ suggestedCategory }}</strong></p>
+    <p>Explication : <em>{{ suggestionExplanation }}</em></p>
+    <button type="button" (click)="applySuggestedCategory()" class="btn btn-secondary">
+      Appliquer la suggestion
+    </button>
+  </div>
+  
+    
+      <div class="form-group">
+        <label for="quantity">Quantité :</label>
+        <input
+          type="number"
+          id="quantity"
+          [(ngModel)]="material.quantity"
+          name="quantity"
+          required
+          min="1"
+          #quantity="ngModel"
+          class="form-control"
+        />
+        <div *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)" class="error-message">
+          <div *ngIf="quantity.errors?.['required']">La quantité est obligatoire.</div>
+          <div *ngIf="quantity.errors?.['min']">La quantité doit être supérieure à 0.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="unitPrice">Prix Unitaire :</label>
+        <input
+          type="number"
+          id="unitPrice"
+          [(ngModel)]="material.unitPrice"
+          name="unitPrice"
+          required
+          min="0.01"
+          step="0.01"
+          #unitPrice="ngModel"
+          class="form-control"
+        />
+        <div *ngIf="unitPrice.invalid && (unitPrice.dirty || unitPrice.touched)" class="error-message">
+          <div *ngIf="unitPrice.errors?.['required']">Le prix unitaire est obligatoire.</div>
+          <div *ngIf="unitPrice.errors?.['min']">Le prix unitaire  ne doit pas être  0 .</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="categorie">Catégorie :</label>
+        <select
+          id="categorie"
+          [(ngModel)]="material.categorie"
+          name="categorie"
+          required
+          #categorie="ngModel"
+          class="form-control"
+        >
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+        <div *ngIf="categorie.invalid && (categorie.dirty || categorie.touched)" class="error-message">
+          <div *ngIf="categorie.errors?.['required']">La catégorie est obligatoire.</div>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+  
+  
+    
+    
+  </main>

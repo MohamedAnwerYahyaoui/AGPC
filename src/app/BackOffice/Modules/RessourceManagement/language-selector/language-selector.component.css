@@ -1,0 +1,12 @@
+
+/* Dans styles.css */
+.cdk-overlay-container {
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  .cdk-overlay-connected-position-bounding-box {
+    position: absolute;
+    right: 0;
+    top: 100% !important;
+  }

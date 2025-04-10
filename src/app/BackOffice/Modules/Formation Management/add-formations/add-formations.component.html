@@ -1,0 +1,44 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Add Formation</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/dashboard/formation/list">Formations</a></li>
+          <li class="breadcrumb-item active">Add Formation</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add Formation</h5>
+  
+              <form [formGroup]="formationForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" formControlName="name" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" id="location" formControlName="location" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea id="description" formControlName="description" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="date" class="form-label">Date</label>
+                  <input type="date" id="date" formControlName="date" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="formationForm.invalid">Add Formation</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

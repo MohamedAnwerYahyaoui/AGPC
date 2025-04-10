@@ -1,0 +1,144 @@
+<main id="main" class="main">
+    <div class="container mt-4">
+      <h2 class="text-center">Liste des Commandes</h2>
+   <!-- Bouton Ajouter -->
+   <button class="btn btn-primary mb-3" (click)="ajouterCommande()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus me-1" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </svg>
+   
+  </button>
+      <!-- Statistiques -->
+      <div class="mb-4" [@fadeIn]>
+        <p><strong>Statistiques :</strong></p>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-3">
+            <div class="stat-box bg-light p-3 rounded">
+              <p class="stat-title text-muted mb-1">En Attente</p>
+              <p class="stat-value text-primary mb-0">{{ statistics.enAttente }} commandes</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <div class="stat-box bg-light p-3 rounded">
+              <p class="stat-title text-muted mb-1">En Cours</p>
+              <p class="stat-value text-info mb-0">{{ statistics.enCours }} commandes</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <div class="stat-box bg-light p-3 rounded">
+              <p class="stat-title text-muted mb-1">Livrées</p>
+              <p class="stat-value text-success mb-0">{{ statistics.livree }} commandes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      
+  
+   
+  
+      <!-- Carte Leaflet -->
+      <div class="card mb-4 border-primary">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Localisation des Commandes</h5>
+        </div>
+        <div class="card-body p-0" style="height: 500px;">
+          <div id="map" style="height: 100%; width: 100%; background: #f8f9fa;">
+            <!-- Message de secours -->
+            <div *ngIf="!map" class="d-flex justify-content-center align-items-center h-100">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Chargement de la carte...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted bg-light">
+          <small>Les positions sont simulées autour de Tunis</small>
+        </div>
+      </div>
+         <!-- Barre de recherche -->
+         <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text bg-primary text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </span>
+            <input
+              type="text"
+              class="form-control border-primary"
+              [(ngModel)]="searchTerm"
+              placeholder="Rechercher par ID, date, statut ou montant..."
+              (input)="filtrerCommandes()"
+            >
+          </div>
+        </div>
+  
+      <!-- Tableau des commandes -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-primary">
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Statut</th>
+              <th>Total</th>
+              <th>Fournisseur</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let commande of filteredCommandes">
+              <td>{{ commande.id }}</td>
+              <td>{{ commande.date | date:'dd/MM/yyyy' }}</td>
+              <td>
+                <span class="badge" [ngClass]="{
+                  'bg-primary': commande.status === 'EN_ATTENTE',
+                  'bg-info': commande.status === 'EN_COURS',
+                  'bg-success': commande.status === 'LIVREE'
+                }">
+                  {{ commande.status }}
+                </span>
+              </td>
+              <td>{{ commande.totalAmount | currency:'TND ' }}</td>
+              <td>{{ commande.fournisseur.name || 'Non spécifié' }}</td>
+              <td class="text-nowrap">
+                <button class="btn btn-sm btn-outline-primary me-1" (click)="modifierCommande(commande.id)" title="Modifier">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5v.207l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg>
+                </button>
+  
+                <button class="btn btn-sm btn-outline-danger me-1" (click)="supprimerCommande(commande.id)" title="Supprimer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                </button>
+  
+                <button *ngIf="commande.status === 'LIVREE'" class="btn btn-sm btn-outline-success me-1" 
+                        (click)="accederAuPaiement(commande.id)" title="Paiement">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                    <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Pagination -->
+      <div class="d-flex justify-content-center">
+        <pagination-controls 
+          (pageChange)="page = $event"
+          previousLabel="Précédent"
+          nextLabel="Suivant"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="Page"
+          screenReaderCurrentLabel="Page courante">
+        </pagination-controls>
+      </div>
+    </div>
+  </main>

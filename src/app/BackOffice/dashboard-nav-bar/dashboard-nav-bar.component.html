@@ -139,26 +139,317 @@
 
     <!-- Another Example Dropdown for Additional Components -->
     <li class="nav-item">
-      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('otherComponentsDropdown')">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('RessourcecomponentsDropdown')">
         <i class="bi bi-gear"></i>
-        <span>Other Components</span>
+        <span>Ressource Management</span>
         
       </a>
-      <ul id="otherComponentsDropdown" class="nav-content" style="display: none;">
+      <ul id="RessourcecomponentsDropdown" class="nav-content" style="display: none;">
         <li>
-          <a routerLink="/dashboard" class="no-underline">
+          <a routerLink="/dashboard/list-fournisseurs" class="no-underline">
             <i class="bi bi-circle"></i>
-            <span>example 1</span>
+            <span> Fournisseur </span>
           </a>
         </li>
         <li>
-          <a routerLink="/dashboard" class="no-underline">
+          <a routerLink="/dashboard/list-materials" class="no-underline">
             <i class="bi bi-circle"></i>
-            <span>example 2</span>
+            <span> Material </span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/stock-list" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span> Stock </span>
+          </a>
+          
+        </li>
+
+      </ul>
+    </li><!-- End Other Components Dropdown -->
+
+    <!-- Another Example Dropdown for Additional Components -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('LivrablescomponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>Livrables Management</span>
+        
+      </a>
+      <ul id="LivrablescomponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/livrable/listetache" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Liste des tache</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/dashboard/livrable/listetime" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Liste des timesheet</span>
+          </a>
+        </li>
+
+
+        <li>
+          <a routerLink="/dashboard/livrable/chart" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>chart </span>
+          </a>
+        </li>
+
+
+
+
+        <li>
+          <a routerLink="/dashboard/livrable/tacheuser" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>calendar</span>
+          </a>
+        </li>
+
+
+
+        <li>
+          <a routerLink="/dashboard/livrable/gantt" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>gantt</span>
+          </a>
+        </li>
+
+
+
+
+        <li>
+          <a routerLink="/dashboard/livrable/model" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>model form</span>
+          </a>
+        </li>
+
+
+        <li>
+          <a routerLink="/dashboard/livrable/listelivrable" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>liste livrable</span>
+          </a>
+        </li>
+
+
+      </ul>
+    </li>
+
+    <!-- Other Components -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('DocumentAssurancecomponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>DocumentAssurance</span>
+      </a>
+      <ul id="DocumentAssurancecomponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/documentation/add" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Add Document</span>
+          </a>
+          <a routerLink="/dashboard/assurance/add" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Add Insurance</span>
+          </a>
+          <a routerLink="/dashboard/assurance/list" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Insurance</span>
+          </a>
+          <a routerLink="/dashboard/documentation/list" class="no-underline">
+            <i class="bi bi-book"></i>
+            <span>Documents</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+     <!-- Another Example Dropdown for Additional Components -->
+     <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('FinancecomponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>Finance manegment</span>
+
+      </a>
+      <ul id="FinancecomponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/finance/budget" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>budget</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/finance/expences" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Expences</span>
           </a>
         </li>
       </ul>
     </li><!-- End Other Components Dropdown -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('EnvironnementcomponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>Environnement management</span>
+
+      </a>
+      <ul id="EnvironnementcomponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/environnement/list" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>chantiers</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/environnement/listZones" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>zones</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)"  routerLink="/dashboard/formation/list">
+        <i class="bi bi-gear"></i>
+        <span>FOrmations management</span>
+
+      </a>
+      <ul id="otherComponentsDropdownt" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/formation/list" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>formations</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/environnement/listZones" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>zones</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Another Example Dropdown for Additional Components -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('MembrescomponentsDropdown')">
+        <i class="bi bi-gear"></i>
+        <span>Membres Management</span>
+        
+      </a>
+      <ul id="MembrescomponentsDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/add-membre" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add Membre</span>
+          </a>
+        </li>
+        
+      
+        <li>
+          <a routerLink="/dashboard/list-membres" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>List Membres</span>
+          </a>
+        </li>
+       
+        <li>
+          <a routerLink="/dashboard/add-contrat" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add Contrat</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/list-contrat" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>List Contrats</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/add-congee" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add Congee</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/list-congee" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>List Congees</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/add-equipe" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/list-equipe" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>List Equipes</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/add-livrable" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>Add Livrable</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/list-livrable" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>List Livrables</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="send-email">
+            <i class="bi bi-circle"></i>
+            <span>Envoyer un Email</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="statistics">
+            <i class="bi bi-circle"></i>
+            <span>Statistiques</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="check-congee">
+            <i class="bi bi-circle"></i>
+            <span>Calcul Congee</span>
+          </a>
+        </li>
+        <li>
+      </ul>
+    </li><!-- End Other Components Dropdown -->
+
+    <!-- Feedback & Reclamations Dropdown -->
+    <li class="nav-item">
+      <a class="nav-link" href="javascript:void(0)" onclick="toggleDropdown('feedbackDropdown')">
+        <i class="bi bi-star"></i>
+        <span>Feedback & Reclamations</span>
+      </a>
+      <ul id="feedbackDropdown" class="nav-content" style="display: none;">
+        <li>
+          <a routerLink="/dashboard/feedbacks" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>View Feedbacks</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/reclamations" class="no-underline">
+            <i class="bi bi-circle"></i>
+            <span>View Reclamations</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+
+
 
     <!-- Pages Heading -->
     <li class="nav-heading">Other</li>

@@ -1,0 +1,157 @@
+/* Conteneur principal */
+.main {
+  max-width: 1200px;     /* Largeur max */
+  margin: 0 auto;        /* Centre horizontalement */
+  padding: 1rem;
+}
+
+/* Titre principal */
+.main h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #0d6efd; /* Bleu principal */
+}
+
+/* Conteneur des cartes */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;        /* Permet le retour à la ligne sur petit écran */
+  gap: 1rem;              /* Espace entre les cartes */
+  justify-content: center;/* Centre les cartes */
+}
+
+/* Style de chaque carte */
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 280px;        /* Largeur fixe ou adaptative */
+  overflow: hidden;    /* Pour arrondir les coins */
+  display: flex;
+  flex-direction: column;
+}
+
+/* En-tête de la carte (bleu) */
+.card-header {
+  background-color: #0d6efd;
+  color: #fff;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: 1rem;
+  color: #333;
+}
+
+/* Pied de la carte (boutons) */
+.card-footer {
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Boutons dans le pied de la carte */
+.card-footer button {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Bouton Modifier (bleu) */
+.card-footer button:first-of-type {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.card-footer button:first-of-type:hover {
+  background-color: #0b5ed7;
+}
+
+/* Bouton Supprimer (rouge) */
+.card-footer button:last-of-type {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.card-footer button:last-of-type:hover {
+  background-color: #bb2d3b;
+}
+
+/* Bouton principal "Ajouter une Équipe" */
+.main button {
+  display: block;
+  margin: 2rem auto 0; /* Centré, marge en haut */
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.main button:hover {
+  background-color: #218838;
+}
+/* Style pour la zone des étoiles */
+.stars {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: lightgray; /* Couleur par défaut pour les étoiles non sélectionnées */
+  margin-right: 2px;
+}
+
+.star.selected {
+  color: gold; /* Couleur pour les étoiles sélectionnées */
+}
+/* On transforme la zone .buttons-grid en grille 2x2 */
+.buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes de largeur égale */
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 0.5rem;
+}
+
+/* Les boutons auront la même taille (largeur et hauteur fixes par exemple) */
+.same-size {
+  width: 100%;     /* occupe toute la largeur de la colonne */
+  height: 40px;    /* hauteur identique */
+  text-align: center;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+.import-btn input {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+/* Bouton Export (rouge) */
+.btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+/* Bouton Import (jaune) */
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+
+
+
+
+
+

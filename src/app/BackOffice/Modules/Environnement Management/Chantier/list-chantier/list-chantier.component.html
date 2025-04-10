@@ -1,0 +1,93 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>List of Chantiers</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item active">Chantiers</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Chantiers</h5>
+              <input type="text" [(ngModel)]="searchText" placeholder="Rechercher un Chantier..." class="form-control mb-3" />
+  
+              <!-- Weather Search -->
+              <div class="mb-3 d-flex align-items-center">
+                <input type="text" [(ngModel)]="city" placeholder="Enter city name..." class="form-control form-control-sm me-2" style="width: auto;" />
+                <button style="background-color: green;" class="btn btn-primary btn-sm" (click)="getWeather()">Get Weather</button>
+              </div>
+  
+              <!-- Weather Data -->
+              <div *ngIf="weatherData.main">
+                <h2>Weather in {{ weatherData.name }}</h2>
+                <h3>Temperature: {{ weatherData.main.temp }} °C</h3>
+                <h3>Weather: {{ weatherData.weather[0].description }}</h3>
+              </div>
+  
+              <!-- Table with stripped rows -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let chantier of filteredBudgets() | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <td>{{chantier?.id}}</td>
+                    <td>{{chantier?.nom}}</td>
+                    <td>{{chantier?.location}}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm" [routerLink]="['/dashboard/environnement/UpdateChantier', chantier.id]">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="btn btn-danger btn-sm" (click)="deleteChantier(chantier.id)">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+  
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  
+              <button class="btn btn-primary mt-3" [routerLink]="['/dashboard/environnement/AddChantier']">
+                <i class="fas fa-plus"></i> Add Chantier
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Construction News Section -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Construction Industry News</h2>
+              <ul class="list-unstyled">
+                <li *ngFor="let article of newsArticles" class="media mb-3">
+                  <img [src]="article.urlToImage" class="mr-3" alt="Article Image" style="width: 100px; height: 100px; object-fit: cover;">
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1"><a [href]="article.url" target="_blank">{{ article.title }}</a></h5>
+                    <p>{{ article.description }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

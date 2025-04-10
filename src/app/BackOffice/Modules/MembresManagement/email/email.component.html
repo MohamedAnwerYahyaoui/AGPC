@@ -1,0 +1,21 @@
+<main id="main" class="main">
+<div>
+    <h2>Envoi d'un Email</h2>
+    <div>
+      <label>À (Destinataire) :</label>
+      <input [(ngModel)]="to" type="text" />
+    </div>
+    <div>
+      <label>Sujet :</label>
+      <input [(ngModel)]="subject" type="text" />
+    </div>
+    <div>
+      <label>Message :</label>
+      <textarea [(ngModel)]="body"></textarea>
+    </div>
+    <button (click)="sendEmail()">Envoyer</button>
+  </div>
+  
+  <p>{{ message }}</p>
+</main>
+  

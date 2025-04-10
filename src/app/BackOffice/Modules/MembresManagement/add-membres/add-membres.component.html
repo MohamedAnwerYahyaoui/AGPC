@@ -1,0 +1,116 @@
+<main id="main" class="main">
+  <div class="form-container">
+    <h2>{{ isEditMode ? 'Modifier le membre' : 'Ajouter un membre' }}</h2>
+    <form [formGroup]="employeForm" (ngSubmit)="onSubmit()">
+      <!-- Champ Nom -->
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" formControlName="nom" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('nom')?.invalid && employeForm.get('nom')?.touched }">
+        <div *ngIf="employeForm.get('nom')?.invalid && employeForm.get('nom')?.touched" class="invalid-feedback">
+          Le nom est obligatoire.
+        </div>
+      </div>
+
+      <!-- Champ Prénom -->
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input id="prenom" type="text" formControlName="prenom" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('prenom')?.invalid && employeForm.get('prenom')?.touched }">
+        <div *ngIf="employeForm.get('prenom')?.invalid && employeForm.get('prenom')?.touched" class="invalid-feedback">
+          Le prénom est obligatoire.
+        </div>
+      </div>
+
+      <!-- Champ Poste -->
+      <div class="form-group">
+        <label for="poste">Poste</label>
+        <input id="poste" type="text" formControlName="poste" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('poste')?.invalid && employeForm.get('poste')?.touched }">
+        <div *ngIf="employeForm.get('poste')?.invalid && employeForm.get('poste')?.touched" class="invalid-feedback">
+          Le poste est obligatoire.
+        </div>
+      </div>
+
+      <!-- Champ Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('email')?.invalid && employeForm.get('email')?.touched }">
+        <div *ngIf="employeForm.get('email')?.invalid && employeForm.get('email')?.touched" class="invalid-feedback">
+          Veuillez entrer un email valide.
+        </div>
+      </div>
+
+      <!-- Champ Téléphone -->
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input id="telephone" type="text" formControlName="telephone" class="form-control"
+               placeholder="+12345678901"
+               [ngClass]="{ 'is-invalid': employeForm.get('telephone')?.invalid && employeForm.get('telephone')?.touched }">
+        <div *ngIf="employeForm.get('telephone')?.invalid && employeForm.get('telephone')?.touched" class="invalid-feedback">
+          <span *ngIf="employeForm.get('telephone')?.errors?.['required']">
+            Le téléphone est obligatoire.
+          </span>
+          <span *ngIf="employeForm.get('telephone')?.errors?.['invalidTelephoneFormat']">
+            {{ employeForm.get('telephone')?.errors?.['invalidTelephoneFormat'] }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Champ Date d'embauche -->
+      <div class="form-group">
+        <label for="dateEmbauche">Date d'embauche</label>
+        <input id="dateEmbauche" type="date" formControlName="dateEmbauche" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('dateEmbauche')?.invalid && employeForm.get('dateEmbauche')?.touched }">
+        <div *ngIf="employeForm.get('dateEmbauche')?.invalid && employeForm.get('dateEmbauche')?.touched" class="invalid-feedback">
+          La date d'embauche est obligatoire.
+        </div>
+      </div>
+
+      <!-- Champ Salaire -->
+      <div class="form-group">
+        <label for="salaire">Salaire</label>
+        <input id="salaire" type="number" formControlName="salaire" class="form-control"
+               [ngClass]="{ 'is-invalid': employeForm.get('salaire')?.invalid && employeForm.get('salaire')?.touched }">
+        <div *ngIf="employeForm.get('salaire')?.invalid && employeForm.get('salaire')?.touched" class="invalid-feedback">
+          <span *ngIf="employeForm.get('salaire')?.errors?.['required']">
+            Le salaire est obligatoire.
+          </span>
+          <span *ngIf="employeForm.get('salaire')?.errors?.['invalidSalary']">
+            {{ employeForm.get('salaire')?.errors?.['invalidSalary'] }}
+          </span>
+          <span *ngIf="employeForm.get('salaire')?.errors?.['salaireMin']">
+            {{ employeForm.get('salaire')?.errors?.['salaireMin'] }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Champ Contrat -->
+      <div class="form-group">
+        <label for="contrat">Contrat</label>
+        <select id="contrat" formControlName="contrat_id" class="form-control">
+          <option value="" disabled>-- Sélectionnez un contrat --</option>
+          <option *ngFor="let contrat of contrats" [value]="contrat.id">
+            {{ contrat.contrat }}
+          </option>
+        </select>
+      </div>
+      
+      <!-- Champ Équipe -->
+      <div class="form-group">
+        <label for="equipe">Équipe</label>
+        <select id="equipe" formControlName="equipe_id" class="form-control">
+          <option *ngFor="let equipe of equipes" [value]="equipe.id">
+            {{ equipe.nom || equipe.intitule }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Bouton de soumission -->
+      <button type="submit" class="btn btn-primary" [disabled]="employeForm.invalid">
+        {{ isEditMode ? 'Modifier' : 'Enregistrer' }}
+      </button>
+    </form>
+  </div>
+</main>

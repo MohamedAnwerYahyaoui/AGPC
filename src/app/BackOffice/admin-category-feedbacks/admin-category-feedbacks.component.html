@@ -1,0 +1,30 @@
+<main id="main" class="main">
+<div class="container">
+    <h2>Average Ratings by Category</h2>
+  
+    <table class="feedback-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Average</th>
+          <th>Stars</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoryNames">
+          <td>{{ category }}</td>
+          <td>{{ averageRatings[category] | number: '1.1-2' }} / 5</td>
+          <td>
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <span 
+                class="star" 
+                [class.filled]="star <= getRoundedRating(averageRatings[category])">
+                &#9733;
+              </span>              
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

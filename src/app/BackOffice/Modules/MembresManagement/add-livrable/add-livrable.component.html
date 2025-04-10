@@ -1,0 +1,43 @@
+<main id="main" class="main">
+  <div class="form-container">
+    <h2>{{ isEditMode ? 'Modifier le livrable' : 'Ajouter un livrable' }}</h2>
+
+    <form [formGroup]="livrableForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          id="nom"
+          type="text"
+          formControlName="nom"
+          class="form-control"
+        />
+
+        <!-- Message d'erreur si 'nom' est invalide et touché -->
+        <div
+          class="text-danger"
+          *ngIf="
+            livrableForm.get('nom')?.invalid &&
+            (livrableForm.get('nom')?.touched || livrableForm.get('nom')?.dirty)
+          "
+        >
+          <!-- Erreur si 'required' -->
+          <div *ngIf="livrableForm.get('nom')?.errors?.['required']">
+            Le nom est requis.
+          </div>
+          <!-- Erreur si 'minlength' -->
+          <div *ngIf="livrableForm.get('nom')?.errors?.['minlength']">
+            Le nom doit comporter au moins 3 caractères.
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="livrableForm.invalid"
+      >
+        {{ isEditMode ? 'Modifier' : 'Enregistrer' }}
+      </button>
+    </form>
+  </div>
+</main>

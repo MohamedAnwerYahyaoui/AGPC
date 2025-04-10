@@ -9,7 +9,7 @@ import { UserDTO } from '../../models/user-dto';
 })
 export class UserServiceService {
 
-  private apiUrl = 'http://localhost:8081/um/users';
+  private apiUrl = 'http://localhost:8086/um/users';
 
   constructor(private http: HttpClient) { }
 

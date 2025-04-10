@@ -1,0 +1,43 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Add Chantier</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/dashboard/environnement/list">Chantiers</a></li>
+          <li class="breadcrumb-item active">Add Chantier</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+  
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add New Chantier</h5>
+  
+              <!-- Chantier Form -->
+              <form [formGroup]="chantierForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>nom</mat-label>
+                    <input matInput formControlName="nom"  required/>
+                  </mat-form-field>
+                </div>
+  
+                <div class="form-group">
+                  <label for="location">Location</label>
+                  <input id="location" formControlName="location" class="form-control" type="text" required>
+                </div>
+  
+                <button type="submit" class="btn btn-primary mt-3" [disabled]="chantierForm.invalid">Add Chantier</button>
+              </form>
+              <!-- End Chantier Form -->
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

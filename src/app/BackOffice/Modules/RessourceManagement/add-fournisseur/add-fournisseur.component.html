@@ -1,0 +1,107 @@
+<main id="main" class="main">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+              <h3 class="card-title text-center">Ajouter un fournisseur</h3>
+            </div>
+            <div class="card-body">
+             
+              <form (ngSubmit)="onSubmit(fournisseurForm)" #fournisseurForm="ngForm">
+             
+                <div class="mb-3">
+                  <label for="name" class="form-label">Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="fournisseur.name"
+                    name="name"
+                    #name="ngModel"
+                    required
+                    minlength="2"
+                    maxlength="100"
+                  />
+                 
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                    <div *ngIf="name.errors?.['required']">Le nom est obligatoire.</div>
+                    <div *ngIf="name.errors?.['minlength']">
+                      Le nom doit contenir au moins 2 caractères.
+                    </div>
+                    <div *ngIf="name.errors?.['maxlength']">
+                      Le nom ne peut pas dépasser 100 caractères.
+                    </div>
+                  </div>
+                </div>
+  
+              
+                <div class="mb-3">
+                  <label for="contact" class="form-label">Contact</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="contact"
+                    [(ngModel)]="fournisseur.contact"
+                    name="contact"
+                    #contact="ngModel"
+                    required
+                    email
+                    (input)="suggestNameFromEmail(fournisseur.contact)"
+                  />
+                 
+                  <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text-danger">
+                    <div *ngIf="contact.errors?.['required']">Le contact est obligatoire.</div>
+                    <div *ngIf="contact.errors?.['email']">Veuillez entrer une adresse e-mail valide.</div>
+                  </div>
+                </div>
+  
+             
+                <div class="mb-3">
+                  <label for="numtel" class="form-label">Numéro de téléphone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="numtel"
+                    [(ngModel)]="fournisseur.numtel"
+                    name="numtel"
+                    #numtel="ngModel"
+                    required
+                    pattern="\+?[0-9]{8,15}"
+                    (input)="detectCountryFromPhoneNumber(fournisseur.numtel.toString())"/> 
+                
+                 
+                  <div *ngIf="numtel.invalid && (numtel.dirty || numtel.touched)" class="text-danger">
+                    <div *ngIf="numtel.errors?.['required']">Le numéro de téléphone est obligatoire.</div>
+                    <div *ngIf="numtel.errors?.['pattern']">
+                      Le numéro de téléphone doit contenir max 13 .
+                    </div>
+                  </div>
+                </div>
+  
+                
+                <div class="mb-3">
+                  <label for="country" class="form-label">Pays détecté</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="country"
+                    [(ngModel)]="detectedCountry"
+                    name="country"
+                    readonly />
+                
+                </div>
+  
+               
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-success">
+                    Ajouter
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

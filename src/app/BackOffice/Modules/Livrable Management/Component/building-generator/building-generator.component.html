@@ -1,0 +1,110 @@
+<!-- building-generator.component.html -->
+<main id="main" class="main">
+    <div class="container">
+      <mat-toolbar color="primary">
+        <span>3D Building Generator</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="toggleHelp()" matTooltip="Aide">
+          <mat-icon>{{showHelp ? 'help' : 'help_outline'}}</mat-icon>
+        </button>
+      </mat-toolbar>
+  
+      <mat-card *ngIf="showHelp" class="help-panel">
+        <mat-card-header>
+          <mat-card-title>Aide</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Configurez votre bâtiment en ajustant les paramètres :</p>
+          <ul>
+            <li><strong>Type</strong> : Définit la forme générale</li>
+            <li><strong>Dimensions</strong> : Longueur et largeur en mètres</li>
+            <li><strong>Étages</strong> : Nombre de niveaux (max 10)</li>
+            <li><strong>Hauteur d'étage</strong> : Entre 2m et 5m</li>
+            <li><strong>Pièces</strong> : Réparties automatiquement</li>
+          </ul>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="toggleHelp()">Fermer</button>
+        </mat-card-actions>
+      </mat-card>
+  
+      <div class="content">
+        <mat-card class="form-card">
+          <mat-card-header>
+            <mat-card-title>Paramètres</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="buildingForm">
+              <mat-form-field appearance="outline">
+                <mat-label>Type de bâtiment</mat-label>
+                <mat-select formControlName="buildingType">
+                  <mat-option *ngFor="let type of buildingTypes" [value]="type">
+                    {{type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Longueur (m)</mat-label>
+                <input matInput type="number" formControlName="length" min="1" step="0.1">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Largeur (m)</mat-label>
+                <input matInput type="number" formControlName="width" min="1" step="0.1">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre d'étages</mat-label>
+                <input matInput type="number" formControlName="floorCount" min="1" max="10">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Hauteur d'étage (m)</mat-label>
+                <input matInput type="number" formControlName="floorHeight" min="2" max="5" step="0.1">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre de pièces</mat-label>
+                <input matInput type="number" formControlName="roomCount" min="1">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Style architectural</mat-label>
+                <mat-select formControlName="architecturalStyle">
+                  <mat-option *ngFor="let style of architecturalStyles" [value]="style">
+                    {{style}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="generateBuilding()" [disabled]="isLoading">
+              <span *ngIf="!isLoading">Générer</span>
+              <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+            </button>
+            <button mat-button (click)="resetCamera()">Réinitialiser la vue</button>
+            <button mat-button (click)="toggleWireframe()">Mode filaire</button>
+            <button mat-raised-button color="accent" (click)="exportPlan()">
+              <mat-icon>download</mat-icon>
+              Exporter Plan
+            </button>
+          </mat-card-actions>
+        </mat-card>
+  
+        <div class="viewer-container">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>Visualisation 3D</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="canvas-wrapper">
+                <canvas #buildingCanvas></canvas>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </main>
