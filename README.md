@@ -44,8 +44,6 @@ AGPC (Automated Graph-based Pathfinding Controller)
 
 
 ⚙️ Prérequis
-
-🐍 Python 3.8+
 📦 Pip & dépendances : pandas, networkx, matplotlib, qrcode, requests, folium, reportlab, stripe, scikit-learn, pytest
 🌐 Git
 🔑 Clés API (PayPal, Stripe, géolocalisation)
@@ -53,24 +51,8 @@ AGPC (Automated Graph-based Pathfinding Controller)
 
 🛠️ Installation
 
-Cloner : git clone https://github.com/MohamedAnwerYahyaoui/AGPC.git && cd AGPC && git checkout Ressource
-Environnement : python -m venv venv && source venv/bin/activate
-Dépendances : pip install -r requirements.txt
-Tester : python -m pytest tests/
+Cloner : git clone https://github.com/MohamedAnwerYahyaoui/AGPC/tree/Ressource
 
-
-🚀 Utilisation
-
-Configurer config/data.json (fournisseurs, matériels, stocks)
-Lancer : python src/main.py --module gestion_ressources
-Exemples :
-QR code : python src/fournisseur.py --action generate_qr --fournisseur_id 1
-Stats stock : python src/stock.py --action stats
-Payer : python src/facture.py --commande_id 123 --payment_method paypal
-
-
-
-📂 Sorties : QR codes, graphiques, factures dans outputs/
 
 📂 Structure
 AGPC/
@@ -92,7 +74,6 @@ AGPC/
 
 Forker 🍴
 Branche : git checkout -b ma-fonctionnalite
-Tester : python -m pytest tests/
 Pull request 📬
 
 
@@ -102,6 +83,6 @@ MIT 📄
 📬 Contact
 
 👤 Kouki Farah
-🌐 GitHub : https://github.com/MohamedAnwerYahyaoui/AGPC/tree/Ressource
+🌐 GitHub : [https://github.com/MohamedAnwerYahyaoui/AGPC/tree/Ressource](https://github.com/farahkouki)
 
 🎉 Merci d'utiliser AGPC !
