@@ -1,11 +1,13 @@
 AGPC - Gestion des Ressources 📦✨
-AGPC (Automated Graph-based Pathfinding Controller) - Branche Ressource : un système de gestion des ressources avec des modules pour Fournisseur, Matériel, Stock, Commande, et Facture, enrichi d'animations pour une interface dynamique. Écrit en 🐍 Python.
+
+AGPC (Automated Graph-based Pathfinding Controller) 
+🛠️ - Branche Ressource : un système de gestion des ressources avec des modules pour Fournisseur, Matériel, Stock, Commande, et Facture, enrichi d'animations pour une interface dynamique.
 
 📋 Fonctionnalités
 🧑‍💼 Fournisseur
 
 📧 Nom suggéré via e-mail
-🌍 Pays détecté par numéro (+33 → France)
+🌍 Pays détecté par numéro (+217 → Tunis)
 📲 QR code généré pour chaque fournisseur
 🔄 Option : Export CSV/JSON
 
